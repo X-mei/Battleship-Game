@@ -1,0 +1,28 @@
+package edu.duke.adh39.battleship;
+
+public class Placement {
+  private final Coordinate where;
+  private final char orientation;
+
+  public Placement(String w, char o){
+    this.where = new Coordinate(w);
+    this.orientation = o;
+  }
+
+  public Placement(){
+    
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
