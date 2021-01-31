@@ -6,16 +6,23 @@ public class Placement {
 
   public Placement(Coordinate w, char o){
     this.where = w;
-    this.orientation = Character.toUpperCase(o);
+    char ori = Character.toUpperCase(o);
+    if (ori != 'V' && ori != 'H'){
+      throw new IllegalArgumentException("Invalid placement request.");
+    }
+    this.orientation = ori;
   }
 
   public Placement(String desc){
     if (desc.length() != 3){
       throw new IllegalArgumentException("Invalid placement request.");
     }
-    desc.toUpperCase();
     this.where = new Coordinate(desc.substring(0,2));
-    this.orientation = desc.charAt(2);
+    char ori = Character.toUpperCase(desc.charAt(2));
+    if (ori != 'V' && ori != 'H'){
+      throw new IllegalArgumentException("Invalid placement request.");
+    }
+    this.orientation = ori;
   }
 
   public Coordinate getCoordinate(){
