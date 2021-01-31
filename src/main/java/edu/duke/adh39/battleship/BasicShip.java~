@@ -1,0 +1,5 @@
+package edu.duke.adh39.battleship;
+
+public class BasicShip implements Ship<Character> {
+  
+}
