@@ -34,7 +34,7 @@ public class BattleShipBoard<T> implements Board<T>{
     myShips.add(toAdd);
     return true;
   }
-
+  
   @Override
   public T whatIsAt(Coordinate where) {
     for (Ship<T> s: myShips) {

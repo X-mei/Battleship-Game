@@ -57,9 +57,15 @@ public class BoardTextView {
     StringBuilder ans = new StringBuilder(""); // README shows two spaces at
     String sep = ""; // start with nothing to separate, then switch to | to separate
     ans.append("" + Mark + " ");
-    for (int i = 0; i < toDisplay.getWidth(); i++) {
+    for (int col = 0; col < toDisplay.getWidth(); col++) {
       ans.append(sep);
-      ans.append(" ");
+      Coordinate c = new Coordinate(row, col);
+      if (toDisplay.whatIsAt(c) == null){
+        ans.append(" ");
+      }
+      else {
+        ans.append("s");
+      }
       sep = "|";
     }
     ans.append("" + " " + Mark);
@@ -68,3 +74,9 @@ public class BoardTextView {
   }
 
 }
+
+
+
+
+
+
