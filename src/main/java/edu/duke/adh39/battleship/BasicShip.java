@@ -1,16 +1,23 @@
 package edu.duke.adh39.battleship;
 
-public class BasicShip implements Ship<Character> {
-  private final Coordinate myLocation;
+import java.util.HashMap;
 
-  public BasicShip(Coordinate c){
-    this.myLocation = c;
+public abstract class BasicShip<T> implements Ship<T> {
+  protected HashMap<Coordinate, Boolean> myPieces;
+  protected ShipDisplayInfo<T> myDisplayInfo;
+  
+  public BasicShip(Iterable<Coordinate> where, ShipDisplayInfo<T> DisplayInfo) {
+    myPieces = new HashMap<Coordinate, Boolean>();
+    for (Coordinate c: where){
+      myPieces.put(c, false);
+    }
+    myDisplayInfo = DisplayInfo;
   }
   
 	@Override
 	public boolean occupiesCoordinates(Coordinate where) {
 		// TODO Auto-generated method stub
-		return where.equals(myLocation);
+    return myPieces.containsKey(where);
 	}
 
 	@Override
@@ -32,9 +39,11 @@ public class BasicShip implements Ship<Character> {
 	}
 
 	@Override
-	public Character getDisplayInfoAt(Coordinate where) {
-		// TODO Auto-generated method stub
-		return 's';
-	}
+	public T getDisplayInfoAt(Coordinate where) {
+    //TODO this is not right.  We need to
+    //look up the hit status of this coordinate
+    return myDisplayInfo.getInfo(where, false);
+  }
+
   
 }

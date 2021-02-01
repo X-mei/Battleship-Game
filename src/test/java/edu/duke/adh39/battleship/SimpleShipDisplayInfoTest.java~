@@ -1,0 +1,16 @@
+package edu.duke.adh39.battleship;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+public class SimpleShipDisplayInfoTest {
+  @Test
+  public void test_get_Info() {
+    Character mData;
+    Character oHit;
+    SimpleShipDisplayInfo shipDisplay = new SimpleShipDisplayInfo(mData, oHit);
+  
+  }
+
+}

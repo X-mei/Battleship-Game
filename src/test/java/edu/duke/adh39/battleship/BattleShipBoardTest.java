@@ -27,11 +27,11 @@ public class BattleShipBoardTest {
         { null, null, null, null, null }, { null, null, null, null, null }, { null, null, null, null, null } };
     checkWhatIsAtBoard(b1, expect);
     Coordinate c1 = new Coordinate(1,4);
-    Ship<Character> s1 = new BasicShip(c1);
+    Ship<Character> s1 = new RectangleShip<Character>(c1, 's', '*');
     Coordinate c2 = new Coordinate(3,1);
-    Ship<Character> s2 = new BasicShip(c2);
+    Ship<Character> s2 = new RectangleShip<Character>(c2, 's', '*');
     Coordinate c3 = new Coordinate(0,2);
-    Ship<Character> s3 = new BasicShip(c3);
+    Ship<Character> s3 = new RectangleShip<Character>(c3, 's', '*');
     b1.tryAddShip(s1);
     b1.tryAddShip(s2);
     b1.tryAddShip(s3);
@@ -55,9 +55,18 @@ public class BattleShipBoardTest {
     for (int i=0; i<b.getHeight(); i++){
       for (int j=0; j<b.getWidth(); j++){
         Coordinate w = new Coordinate(i,j);
-        assertEquals(b.whatIsAt(w), expected[i][j]);
+        assertEquals(expected[i][j], b.whatIsAt(w));
       }
     }
   }
 }
+
+
+
+
+
+
+
+
+
 

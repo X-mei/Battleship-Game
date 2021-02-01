@@ -48,11 +48,11 @@ public class BoardTextViewTest {
     String Body = "A s|  A\n" + "B  |s B\n" + "C  |s C\n";
     Board<Character> b = new BattleShipBoard<Character>(2, 3);
     Coordinate c1 = new Coordinate(0,0);
-    Ship<Character> s1 = new BasicShip(c1);
+    Ship<Character> s1 = new RectangleShip<Character>(c1, 's', '*');
     Coordinate c2 = new Coordinate(1,1);
-    Ship<Character> s2 = new BasicShip(c2);
+    Ship<Character> s2 = new RectangleShip<Character>(c2, 's', '*');
     Coordinate c3 = new Coordinate(2,1);
-    Ship<Character> s3 = new BasicShip(c3);
+    Ship<Character> s3 = new RectangleShip<Character>(c3, 's', '*');
     b.tryAddShip(s1);
     b.tryAddShip(s2);
     b.tryAddShip(s3);
