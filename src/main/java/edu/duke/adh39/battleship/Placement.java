@@ -1,9 +1,19 @@
 package edu.duke.adh39.battleship;
 
+/**
+ * This class builds on coordinate and have a extra field to represent the orientation.
+ * It checks illegal input and support several basic getters as well as overwriting
+ * several functions.
+ */
 public class Placement {
   private final Coordinate where;
   private final char orientation;
 
+  /**
+   * Initilize the placement based on straight coordinate and orientation.
+   * @param coordinate and a character orientation
+   * @throws IllegalArgumentException when invalid input encountered
+   */
   public Placement(Coordinate w, char o){
     this.where = w;
     char ori = Character.toUpperCase(o);
@@ -13,6 +23,11 @@ public class Placement {
     this.orientation = ori;
   }
 
+  /**
+   * Initilize the placement based on the input string.
+   * @param the string to be parsed into a placement
+   * @throws IllegalArgumentException when invalid input encountered
+   */
   public Placement(String desc){
     if (desc.length() != 3){
       throw new IllegalArgumentException("Invalid placement length.");

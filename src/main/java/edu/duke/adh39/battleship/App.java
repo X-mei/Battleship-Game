@@ -9,25 +9,42 @@ import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.io.Reader;
 
+/**
+ * This class initialize the Game App.
+ * User is allowed to add a ship to the board.
+ * The result will then be displayed.
+ */
 public class App {
   final Board<Character> theBoard;
   final BoardTextView view;
   final BufferedReader inputReader;
   final PrintStream out;
-
+  
+  /**
+   * Constructs a Game app.
+   * @param theBoard is the board to act on, inputSource/out is the
+   * place to read/write input from/to. 
+   */
   public App(Board<Character> theBoard, Reader inputSource, PrintStream out) {
     this.theBoard = theBoard;
     this.view = new BoardTextView(theBoard);
     this.inputReader = new BufferedReader(inputSource);
     this.out = out;
   }
-
+  
+  /**
+   * This function prompt the user for a input.
+   * @return the placement after the conversion.
+   */
   public Placement readPlacement(String prompt) throws IOException {
     out.println(prompt);
     String s = inputReader.readLine();
     return new Placement(s);
   }
 
+  /**
+   * This function place a ship on the board and display the board afterwards.
+   */
   public void doOnePlacement() throws IOException {
     Placement p = readPlacement("Where would you like to put your ship?");
     RectangleShip<Character> s = new RectangleShip<Character>(p.getCoordinate(), 's', '*');
@@ -36,6 +53,9 @@ public class App {
     out.println(view.displayMyOwnBoard());
   }
 
+  /**
+   * This function runs the main program by setting up a board and add a ship to it.
+   */
   public static void main(String[] args) throws IOException{
     Board<Character> b = new BattleShipBoard<Character>(10, 20);
     App app = new App(b, new InputStreamReader(System.in), System.out);

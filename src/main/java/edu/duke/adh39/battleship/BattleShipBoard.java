@@ -1,7 +1,11 @@
 package edu.duke.adh39.battleship;
 
 import java.util.ArrayList;
-
+/**
+ * This class implements the board class and It is
+ * generic in typename T, which is the type of information the view needs to
+ * display this ship.
+ */
 public class BattleShipBoard<T> implements Board<T>{
   private final int width;
   private final int height;
