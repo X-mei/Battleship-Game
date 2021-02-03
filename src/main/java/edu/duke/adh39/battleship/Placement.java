@@ -17,9 +17,11 @@ public class Placement {
   public Placement(Coordinate w, char o){
     this.where = w;
     char ori = Character.toUpperCase(o);
+    /*
     if (ori != 'V' && ori != 'H'){
       throw new IllegalArgumentException("Invalid placement orientation.");
     }
+    */
     this.orientation = ori;
   }
 
@@ -28,15 +30,17 @@ public class Placement {
    * @param the string to be parsed into a placement
    * @throws IllegalArgumentException when invalid input encountered
    */
-  public Placement(String desc){
+  public Placement(String desc) {
     if (desc.length() != 3){
       throw new IllegalArgumentException("Invalid placement length.");
     }
     this.where = new Coordinate(desc.substring(0,2));
     char ori = Character.toUpperCase(desc.charAt(2));
+    /*
     if (ori != 'V' && ori != 'H'){
       throw new IllegalArgumentException("Invalid placement orientation.");
     }
+    */
     this.orientation = ori;
   }
 

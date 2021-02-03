@@ -43,11 +43,11 @@ class AppTest {
       StringReader sr = new StringReader("B2V\nC0H\na1v\n");
       ByteArrayOutputStream bytes = new ByteArrayOutputStream();
       PrintStream ps = new PrintStream(bytes, true);
-      Board<Character> b = new BattleShipBoard<Character>(3, 3);
+      Board<Character> b = new BattleShipBoard<Character>(3,3);
       String[] expected = new String[3];
-      expected[0] = "  0|1|2\n" + "A  | |  A\n" + "B  | |s B\n" + "C  | |  C\n" + "  0|1|2\n";
-      expected[1] = "  0|1|2\n" + "A  | |  A\n" + "B  | |s B\n" + "C s| |  C\n" + "  0|1|2\n";
-      expected[2] = "  0|1|2\n" + "A  |s|  A\n" + "B  | |s B\n" + "C s| |  C\n" + "  0|1|2\n";
+      expected[0] = "  0|1|2\n" + "A  | |  A\n" + "B  | |s B\n" + "C  | |s C\n" + "  0|1|2\n";
+      expected[1] = "  0|1|2\n" + "A  | |  A\n" + "B  | |s B\n" + "C s|s|s C\n" + "  0|1|2\n";
+      expected[2] = "  0|1|2\n" + "A  |s|  A\n" + "B  |s|s B\n" + "C s|s|s C\n" + "  0|1|2\n";
       App app = new App(b, sr, ps);
       for (int i = 0; i < expected.length; i++) {
         app.doOnePlacement();

@@ -6,6 +6,7 @@ import java.util.HashSet;
  * This class extends the basic ship class.
  */
 public class RectangleShip<T> extends BasicShip<T>{
+  private final String name;
   /**
    * This is a helper function to create a hashset of all the coordinate
    * of a ship with the given specification.
@@ -30,7 +31,7 @@ public class RectangleShip<T> extends BasicShip<T>{
    * when trying to display.
    */
   public RectangleShip(Coordinate upperLeft, T data, T onHit) {
-    this(upperLeft, 1, 1, new SimpleShipDisplayInfo<T>(data, onHit));
+    this("testship", upperLeft, 1, 1, new SimpleShipDisplayInfo<T>(data, onHit));
   }
 
   /**
@@ -39,18 +40,25 @@ public class RectangleShip<T> extends BasicShip<T>{
    * @param upperLeft is the anchor of the ship. Data and onHit is the information needed
    * when trying to display.Width and height is the size of the ship.
    */
-  public RectangleShip(Coordinate upperLeft, int width, int height, T data, T onHit) {
-    this(upperLeft, width, height, new SimpleShipDisplayInfo<T>(data, onHit));
+  public RectangleShip(String name, Coordinate upperLeft, int width, int height, T data, T onHit) {
+    this(name, upperLeft, width, height, new SimpleShipDisplayInfo<T>(data, onHit));
+    
   }
 
   /**
    * This is a constructor to call its parent class to initilize the class.
    * @param upperLeft is the anchor of the ship. SimpleShipDisplayInfo incorporate the information needed when displaying the ship.
    */
-  public RectangleShip(Coordinate upperLeft, int width, int height, SimpleShipDisplayInfo<T> sim) {
+  public RectangleShip(String name, Coordinate upperLeft, int width, int height, SimpleShipDisplayInfo<T> sim) {
     super(makeCoords(upperLeft, width, height), sim);
+    this.name = name;
   }
 
+  @Override
+  public String getName() {
+    return name;
+  }
+  
 }
 
 

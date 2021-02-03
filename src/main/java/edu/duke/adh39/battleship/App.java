@@ -19,7 +19,7 @@ public class App {
   final BoardTextView view;
   final BufferedReader inputReader;
   final PrintStream out;
-  
+  final AbstractShipFactory<Character> factory;
   /**
    * Constructs a Game app.
    * @param theBoard is the board to act on, inputSource/out is the
@@ -30,6 +30,7 @@ public class App {
     this.view = new BoardTextView(theBoard);
     this.inputReader = new BufferedReader(inputSource);
     this.out = out;
+    this.factory = new V1ShipFactory<Character>();
   }
   
   /**
@@ -47,7 +48,7 @@ public class App {
    */
   public void doOnePlacement() throws IOException {
     Placement p = readPlacement("Where would you like to put your ship?");
-    RectangleShip<Character> s = new RectangleShip<Character>(p.getCoordinate(), 's', '*');
+    Ship<Character> s  = factory.makeDestroyer(p);
     theBoard.tryAddShip(s);
     out.println(view.displayMyOwnBoard());
   }

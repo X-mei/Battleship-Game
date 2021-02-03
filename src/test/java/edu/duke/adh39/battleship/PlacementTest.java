@@ -5,11 +5,13 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 public class PlacementTest {
+  /*
   @Test
   public void test_invalid_constructor() {
     Coordinate c1 = new Coordinate(1, 2);
     assertThrows(IllegalArgumentException.class, () -> new Placement(c1, 'A'));
   }
+  */
   
   @Test
   public void test_equals() {
@@ -55,8 +57,6 @@ public class PlacementTest {
   
   @Test
   public void test_string_constructor_error_cases() {
-    assertThrows(IllegalArgumentException.class, () -> new Placement("A0D"));
-    assertThrows(IllegalArgumentException.class, () -> new Placement("B5a"));
     assertThrows(IllegalArgumentException.class, () -> new Placement("@0v"));
     assertThrows(IllegalArgumentException.class, () -> new Placement("[0r"));
     assertThrows(IllegalArgumentException.class, () -> new Placement("A/v"));
