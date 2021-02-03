@@ -30,20 +30,24 @@ public abstract class BasicShip<T> implements Ship<T> {
 
 	@Override
 	public boolean isSunk() {
-		// TODO Auto-generated method stub
-		return false;
+    for (Coordinate c: myPieces.keySet()){
+      if (!wasHitAt(c)) {
+        return false;
+      }
+    }
+		return true;
 	}
 
 	@Override
 	public void recordHitAt(Coordinate where) {
-		// TODO Auto-generated method stub
-		
+		checkCoordinateInThisShip(where);
+    myPieces.put(where, true);
 	}
 
 	@Override
 	public boolean wasHitAt(Coordinate where) {
-		// TODO Auto-generated method stub
-		return false;
+    checkCoordinateInThisShip(where);
+    return myPieces.get(where);
 	}
 
   
@@ -51,8 +55,25 @@ public abstract class BasicShip<T> implements Ship<T> {
 	public T getDisplayInfoAt(Coordinate where) {
     //TODO this is not right.  We need to
     //look up the hit status of this coordinate
-    return myDisplayInfo.getInfo(where, false);
+    checkCoordinateInThisShip(where);
+    return myDisplayInfo.getInfo(where, myPieces.get(where));
   }
 
+  protected void checkCoordinateInThisShip(Coordinate c) {
+    if (!occupiesCoordinates(c)){
+      throw new IllegalArgumentException("This coordinate does not belong to this ship.");
+    }
+  }
   
 }
+
+
+
+
+
+
+
+
+
+
+
