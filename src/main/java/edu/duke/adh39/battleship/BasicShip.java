@@ -64,8 +64,13 @@ public abstract class BasicShip<T> implements Ship<T> {
       throw new IllegalArgumentException("This coordinate does not belong to this ship.");
     }
   }
-  
+
+  @Override
+  public Iterable<Coordinate> getCoordinates(){
+    return myPieces.keySet();
+  }
 }
+
 
 
 
