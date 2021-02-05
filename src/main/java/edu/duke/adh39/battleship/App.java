@@ -30,8 +30,12 @@ public class App {
    * @throws IOException if the doOnePlacement throws a IOException.
    */
   public void doPlacementPhase() throws IOException{
-    p1.doOnePlacement();
-    p2.doOnePlacement();
+    for (String str : p1.shipsToPlace) {
+      p1.doOnePlacement(str);
+    }
+    for (String str : p2.shipsToPlace) {
+      p2.doOnePlacement(str);
+    }
   }
 
   /**
