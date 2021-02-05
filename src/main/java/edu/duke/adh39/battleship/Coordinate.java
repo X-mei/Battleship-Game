@@ -23,7 +23,7 @@ public class Coordinate {
    * @param input string to parse
    * @throws IllegalArgumentException when invalid input encountered
    */
-  public Coordinate(String descr){
+  public Coordinate(String descr) throws IllegalArgumentException {
     if (descr.length() != 2){
       throw new IllegalArgumentException("Invalid coordinate length.");
     }

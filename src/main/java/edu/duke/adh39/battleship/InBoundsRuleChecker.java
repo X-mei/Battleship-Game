@@ -7,25 +7,26 @@ public class InBoundsRuleChecker<T> extends PlacementRuleChecker<T>{
   }
   
 	@Override
-	protected boolean checkMyRule(Ship<T> theShip, Board<T> theBoard) {
+	protected String checkMyRule(Ship<T> theShip, Board<T> theBoard) {
 		Iterable<Coordinate> set = theShip.getCoordinates();
     int width = theBoard.getWidth();
     int height = theBoard.getHeight();
+    String result = null;
     for (Coordinate loc: set){
-      if (0 <= loc.getRow() && loc.getRow() < height) {
-        //do nothing
+      if (loc.getRow() < 0) {
+        result = "That placement is invalid: the ship goes off the top of the board.";
       }
-      else {
-        return false;
+      else if (loc.getRow() >= height) {
+        result = "That placement is invalid: the ship goes off the bottom of the board.";
       }
-      if (0 <= loc.getColumn() && loc.getColumn() < width) {
-        //do nothing
+      if (loc.getColumn() < 0) {
+        result = "That placement is invalid: the ship goes off the left of the board.";
       }
-      else {
-        return false;
+      else if (loc.getColumn() >= width) {
+        result = "That placement is invalid: the ship goes off the right of the board.";
       }
     }
-		return true;
+		return result;
 	}
   
 }

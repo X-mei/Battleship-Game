@@ -22,7 +22,7 @@ public class V1ShipFactory<T> implements AbstractShipFactory<T>{
 		return createShip(where, 1, 3, 'd', "Destroyer");
 	}
 
-  protected Ship<T> createShip(Placement where, int w, int h, char letter, String name) {
+  protected Ship<T> createShip(Placement where, int w, int h, char letter, String name) throws IllegalArgumentException {
     if (where.getOrientation() == 'V') {
       //Do nothing when input is vertical
     }

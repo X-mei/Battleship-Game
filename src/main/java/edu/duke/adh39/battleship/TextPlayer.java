@@ -44,18 +44,34 @@ public class TextPlayer {
   public Placement readPlacement(String prompt) throws IOException {
     out.println(prompt);
     String s = inputReader.readLine();
+    if (s == null) {
+      throw new IOException();
+    }
     return new Placement(s);
   }
 
   /**
    * This function place a ship on the board and display the board afterwards.
+   * It also handles all the previous IllegalArgumentException.
    * @throws IOException if the input outputing the result fails.
    */
   public void doOnePlacement(String shipName) throws IOException {
-    Placement p = readPlacement("Player " + name + " where would you like to place a " + shipName + "?");
-    Ship<Character> ship = shipCreationFns.get(shipName).apply(p);
-    theBoard.tryAddShip(ship);
-    out.println(view.displayMyOwnBoard());
+    Boolean success = false;
+    while (!success) {
+      try {
+        Placement p = readPlacement("Player " + name + " where would you like to place a " + shipName + "?");
+        Ship<Character> ship = shipCreationFns.get(shipName).apply(p);
+        String result = theBoard.tryAddShip(ship);
+        if (result != null) {
+          throw new IllegalArgumentException(result);
+        }
+        out.println(view.displayMyOwnBoard());
+        success = true;
+      }
+      catch (IllegalArgumentException ilg){
+        out.println(ilg.getMessage());
+      }
+    }
   }
 
   /**

@@ -5,7 +5,7 @@ package edu.duke.adh39.battleship;
  * display this ship.
  */
 public abstract class PlacementRuleChecker<T> {
-  protected final PlacementRuleChecker<T> next;
+  private final PlacementRuleChecker<T> next;
   
   /**
    * Initilize the next rule to check.
@@ -21,22 +21,24 @@ public abstract class PlacementRuleChecker<T> {
    * @param theShip is the ship to be put on the theBoard.
    * @return true if this and all following rule is met.
    */
-  protected abstract String checkMyRule(Ship<T> theShip, Board<T> theBoard);
+  protected abstract boolean checkMyRule(Ship<T> theShip, Board<T> theBoard);
 
   /**
    * This rule checks if the given ship and board confront to the placement restriction.
    * @param theShip is the ship to be put on the theBoard.
    * @return true if this and all following rule is met.
    */
-  public String checkPlacement (Ship<T> theShip, Board<T> theBoard) {
-    String result = checkMyRule(theShip, theBoard);
-    if (result == null && next != null) {
+  public boolean checkPlacement (Ship<T> theShip, Board<T> theBoard) {
+    //if we fail our own rule: stop the placement is not legal
+    if (!checkMyRule(theShip, theBoard)) {
+      return false;
+    }
+    //other wise, ask the rest of the chain.
+    if (next != null) {
       return next.checkPlacement(theShip, theBoard); 
     }
-    return result;
+    //if there are no more rules, then the placement is legal
+    return true;
   }
 
 }
-
-
-

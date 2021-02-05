@@ -21,9 +21,9 @@ public interface Board<T> {
   /**
    * This function tries to add a ship and determines whether its ok.
    * @param the ship to be added.
-   * @return true is its valid to add ship.
+   * @return null if its valid to add ship, return a string description otherwise.
    */
-  public boolean tryAddShip(Ship<T> toAdd);
+  public String tryAddShip(Ship<T> toAdd);
 
   /**
    * This function returns the information at a given coordinate

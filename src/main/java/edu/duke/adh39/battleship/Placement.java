@@ -12,7 +12,6 @@ public class Placement {
   /**
    * Initilize the placement based on straight coordinate and orientation.
    * @param coordinate and a character orientation
-   * @throws IllegalArgumentException when invalid input encountered
    */
   public Placement(Coordinate w, char o){
     this.where = w;
@@ -29,8 +28,9 @@ public class Placement {
    * Initilize the placement based on the input string.
    * @param the string to be parsed into a placement
    * @throws IllegalArgumentException when invalid input encountered
+   * could originally be thrown by the constructor of coordinate object.
    */
-  public Placement(String desc) {
+  public Placement(String desc) throws IllegalArgumentException {
     if (desc.length() != 3){
       throw new IllegalArgumentException("Invalid placement length.");
     }

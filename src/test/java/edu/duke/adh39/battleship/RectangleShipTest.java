@@ -53,6 +53,16 @@ public class RectangleShipTest {
     assertEquals(true, s.isSunk());
     assertEquals("Rectangle Ship", s.getName());
   }
+
+  @Test
+  public void test_getCoordinates() {
+    HashSet<Coordinate> set = new HashSet<Coordinate>();
+    set.add(new Coordinate(1, 3));
+    set.add(new Coordinate(2, 3));
+    set.add(new Coordinate(3, 3));
+    BasicShip<Character> s = new RectangleShip<Character>("Rectangle Ship", new Coordinate(1,3), 1, 3, 's', '*');
+    assertEquals(set, s.getCoordinates());
+  }
 }
 
 
