@@ -8,7 +8,7 @@ public class NoCollisionRuleCheckerTest {
   @Test
   public void test_no_collision_rule() {
     V1ShipFactory<Character> f = new V1ShipFactory <Character>();
-    Board<Character> b = new BattleShipBoard<Character>(5, 5);
+    Board<Character> b = new BattleShipBoard<Character>(5, 5, 'X');
     PlacementRuleChecker<Character> rule = new NoCollisionRuleChecker<Character>(null);
     Placement p1 = new Placement("A0H");
     Placement p2 = new Placement("A4v");
@@ -28,7 +28,7 @@ public class NoCollisionRuleCheckerTest {
 
   @Test
   public void test_no_collision_and_in_bound() {
-    Board<Character> b = new BattleShipBoard<Character>(5, 5);
+    Board<Character> b = new BattleShipBoard<Character>(5, 5, 'X');
     V1ShipFactory<Character> f = new V1ShipFactory <Character>();
     PlacementRuleChecker<Character> rule = new NoCollisionRuleChecker<Character>(new InBoundsRuleChecker<Character>(null));
     Placement p1 = new Placement("A0H");

@@ -19,7 +19,7 @@ public class RectangleShipTest {
   
   @Test
   public void test_rectangle_ship_constructor() {
-    BasicShip<Character> s = new RectangleShip<Character>("Rectangle Ship", new Coordinate(1,3), 1, 3, new SimpleShipDisplayInfo<Character>('s', '*'));
+    BasicShip<Character> s = new RectangleShip<Character>("Rectangle Ship", new Coordinate(1,3), 1, 3, new SimpleShipDisplayInfo<Character>('s', '*'), new SimpleShipDisplayInfo<Character>(null, 's'));
     assertEquals(true, s.occupiesCoordinates(new Coordinate(1,3)));
     assertEquals(true, s.occupiesCoordinates(new Coordinate(2,3)));
     assertEquals(true, s.occupiesCoordinates(new Coordinate(3,3)));
@@ -29,7 +29,7 @@ public class RectangleShipTest {
 
   @Test
   public void test_record_was_hit_at() {
-    BasicShip<Character> s = new RectangleShip<Character>("Rectangle Ship", new Coordinate(1,3), 1, 3, new SimpleShipDisplayInfo<Character>('s', '*'));
+    BasicShip<Character> s = new RectangleShip<Character>("Rectangle Ship", new Coordinate(1,3), 1, 3, new SimpleShipDisplayInfo<Character>('s', '*'), new SimpleShipDisplayInfo<Character>(null, 's'));
     s.wasHitAt(new Coordinate(1, 3));
     assertThrows(IllegalArgumentException.class, ()->s.recordHitAt(new Coordinate(1,4)));
     assertThrows(IllegalArgumentException.class, ()->s.recordHitAt(new Coordinate(4,3)));

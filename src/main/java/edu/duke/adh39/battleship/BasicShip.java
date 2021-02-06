@@ -8,18 +8,19 @@ import java.util.HashMap;
 public abstract class BasicShip<T> implements Ship<T> {
   protected HashMap<Coordinate, Boolean> myPieces;
   protected ShipDisplayInfo<T> myDisplayInfo;
-
+  protected ShipDisplayInfo<T> enemyDisplayInfo;
   /**
    * Constructs a Basic ship, given the coordinate and display info.
    * @param where is the location of the ship, DisplayInfo is the info
    * needed when printing a ship on the board.
    */
-  public BasicShip(Iterable<Coordinate> where, ShipDisplayInfo<T> DisplayInfo) {
+  public BasicShip(Iterable<Coordinate> where, ShipDisplayInfo<T> DisplayInfoMe, ShipDisplayInfo<T> DisplayInfoEnemy) {
     myPieces = new HashMap<Coordinate, Boolean>();
     for (Coordinate c: where){
       myPieces.put(c, false);
     }
-    myDisplayInfo = DisplayInfo;
+    this.myDisplayInfo = DisplayInfoMe;
+    this.enemyDisplayInfo = DisplayInfoEnemy;
   }
 
 	@Override
@@ -52,11 +53,14 @@ public abstract class BasicShip<T> implements Ship<T> {
 
   
 	@Override
-	public T getDisplayInfoAt(Coordinate where) {
-    //TODO this is not right.  We need to
-    //look up the hit status of this coordinate
+	public T getDisplayInfoAt(Coordinate where, Boolean myShip) {
     checkCoordinateInThisShip(where);
-    return myDisplayInfo.getInfo(where, myPieces.get(where));
+    if (myShip) {
+      return myDisplayInfo.getInfo(where, myPieces.get(where));
+    }
+    else {
+      return enemyDisplayInfo.getInfo(where, myPieces.get(where));
+    }
   }
 
   protected void checkCoordinateInThisShip(Coordinate c) {

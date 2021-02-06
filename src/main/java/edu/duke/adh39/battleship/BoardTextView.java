@@ -1,5 +1,7 @@
 package edu.duke.adh39.battleship;
 
+import java.util.function.Function;
+
 /**
  * This class handles textual display of a Board (i.e., converting it to a
  * string to show to the user). It supports two ways to display the Board: one
@@ -25,13 +27,21 @@ public class BoardTextView {
 
   }
 
-  public String displayMyOwnBoard() {
+  protected String displayAnyBoard(Function<Coordinate, Character> getSquareFn) {
     String result = makeHeader();
     for (int i = 0; i < toDisplay.getHeight(); i++) {
-      result += makeLines(i);
+      result += makeLines(i, getSquareFn);
     }
     result += makeHeader();
     return result;
+  }
+  
+  public String displayMyOwnBoard() {
+    return displayAnyBoard((c)->toDisplay.whatIsAtForSelf(c));
+  }
+
+  public String displayEnemyBoard() {
+    return displayAnyBoard((c)->toDisplay.whatIsAtForEnemy(c));
   }
 
   /**
@@ -51,7 +61,7 @@ public class BoardTextView {
     return ans.toString();
   }
 
-  private String makeLines(int row) {
+  private String makeLines(int row, Function<Coordinate, Character> getSquareFn) {
     char Mark = 'A';
     Mark += row;
     StringBuilder ans = new StringBuilder(""); // README shows two spaces at
@@ -60,13 +70,15 @@ public class BoardTextView {
     for (int col = 0; col < toDisplay.getWidth(); col++) {
       ans.append(sep);
       Coordinate c = new Coordinate(row, col);
-      if (toDisplay.whatIsAt(c) == null){
+      Character chr = getSquareFn.apply(c);
+      if (chr == null){
         ans.append(" ");
       }
       else {
-        ans.append("s");
+        ans.append(chr);
       }
       sep = "|";
+      
     }
     ans.append("" + " " + Mark);
     ans.append("\n");
@@ -74,6 +86,7 @@ public class BoardTextView {
   }
 
 }
+
 
 
 

@@ -59,12 +59,7 @@ public class BattleShipBoardTest {
     b.tryAddShip(s1);
     b.tryAddShip(s2);
     b.fireAt(new Coordinate(0, 1));
-    b.fireAt(new Coordinate(1, 2));
-    assertEquals(null, b.whatIsAtForEnemy(new Coordinate("A3")));
-    b.fireAt(new Coordinate(0, 3));
-    assertEquals('s', b.whatIsAtForEnemy(new Coordinate("A1")));
-    assertEquals('b', b.whatIsAtForEnemy(new Coordinate("B2")));
-    assertEquals('X', b.whatIsAtForEnemy(new Coordinate("A3")));
+    assertEquals(" ");
   }
 
   @Test

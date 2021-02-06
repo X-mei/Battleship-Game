@@ -34,7 +34,7 @@ public class V1ShipFactory<T> implements AbstractShipFactory<T>{
     else {
       throw new IllegalArgumentException("Illegal orientation, have to be vertical/horizontal.");
     }
-    return new RectangleShip(name, where.getCoordinate(), w, h, new SimpleShipDisplayInfo<Character>(letter, '*'));
+    return new RectangleShip(name, where.getCoordinate(), w, h, letter, '*');
   }
 }
 

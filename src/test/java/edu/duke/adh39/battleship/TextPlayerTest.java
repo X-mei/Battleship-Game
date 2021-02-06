@@ -34,8 +34,8 @@ public class TextPlayerTest {
     ByteArrayOutputStream bytes = new ByteArrayOutputStream();
     TextPlayer player = createTextPlayer(3, 3, "B2V\nC0H\na0H\n", bytes);
     String[] expected = new String[2];
-    expected[0] = "  0|1|2\n" + "A  | |  A\n" + "B  | |  B\n" + "C s|s|s C\n" + "  0|1|2\n";
-    expected[1] = "  0|1|2\n" + "A s|s|s A\n" + "B  | |  B\n" + "C s|s|s C\n" + "  0|1|2\n";
+    expected[0] = "  0|1|2\n" + "A  | |  A\n" + "B  | |  B\n" + "C d|d|d C\n" + "  0|1|2\n";
+    expected[1] = "  0|1|2\n" + "A d|d|d A\n" + "B  | |  B\n" + "C d|d|d C\n" + "  0|1|2\n";
     player.doOnePlacement("Destroyer");
     assertEquals("Player A where would you like to place a Destroyer?\nThat placement is invalid: the ship goes off the bottom of the board.\nPlayer A where would you like to place a Destroyer?\n" + expected[0] + "\n", bytes.toString());
     bytes.reset();
@@ -54,7 +54,7 @@ public class TextPlayerTest {
   private TextPlayer createTextPlayer(int w, int h, String inputData, OutputStream bytes) {
     BufferedReader input = new BufferedReader(new StringReader(inputData));
     PrintStream output = new PrintStream(bytes, true);
-    Board<Character> board = new BattleShipBoard<Character>(w, h);
+    Board<Character> board = new BattleShipBoard<Character>(w, h, 'X');
     V1ShipFactory shipFactory = new V1ShipFactory();
     return new TextPlayer("A", board, input, output, shipFactory);
   }

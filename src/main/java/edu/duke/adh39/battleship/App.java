@@ -42,8 +42,8 @@ public class App {
    * This function runs the main program setting up two players and have each player place one ship on their board.
    */
   public static void main(String[] args) throws IOException {
-    Board<Character> b1 = new BattleShipBoard<Character>(10, 20);
-    Board<Character> b2 = new BattleShipBoard<Character>(10, 20);
+    Board<Character> b1 = new BattleShipBoard<Character>(10, 20, 'X');
+    Board<Character> b2 = new BattleShipBoard<Character>(10, 20, 'X');
     App app = new App(b1, b2, new BufferedReader(new InputStreamReader(System.in)), System.out);
     app.doPlacementPhase();
   }

@@ -24,14 +24,29 @@ public interface Board<T> {
    * @return null if its valid to add ship, return a string description otherwise.
    */
   public String tryAddShip(Ship<T> toAdd);
-
+  
   /**
-   * This function returns the information at a given coordinate
+   * This function returns the information at a given coordinate(self view)
    * @param the location to check.
    * @return the information at the location in typename T.
    */
-  public T whatIsAt(Coordinate where);
+  public T whatIsAtForSelf(Coordinate where);
+
+  /**
+   * This function returns the information at a given coordinate(enemy view)
+   * @param the location to check.
+   * @return the information at the location in typename T.
+   */
+  public T whatIsAtForEnemy(Coordinate where);
+
+  /**
+   * This function search for any ship that occupies coordinate c and return the corresponding ship after recording it has been hit.
+   * @param the location to check.
+   * @return the ship that has been hit after beeing hit. If not found, record hit misses and return null.
+   */
+  public Ship<T> fireAt(Coordinate c);
 }
+
 
 
 

@@ -31,7 +31,7 @@ public class RectangleShip<T> extends BasicShip<T>{
    * when trying to display.
    */
   public RectangleShip(Coordinate upperLeft, T data, T onHit) {
-    this("testship", upperLeft, 1, 1, new SimpleShipDisplayInfo<T>(data, onHit));
+    this("testship", upperLeft, 1, 1, new SimpleShipDisplayInfo<T>(data, onHit), new SimpleShipDisplayInfo<T>(null, data));
   }
 
   /**
@@ -41,7 +41,8 @@ public class RectangleShip<T> extends BasicShip<T>{
    * when trying to display.Width and height is the size of the ship.
    */
   public RectangleShip(String name, Coordinate upperLeft, int width, int height, T data, T onHit) {
-    this(name, upperLeft, width, height, new SimpleShipDisplayInfo<T>(data, onHit));
+    this(name, upperLeft, width, height, new SimpleShipDisplayInfo<T>(data, onHit), new SimpleShipDisplayInfo<T>(null, data));
+
     
   }
 
@@ -49,8 +50,8 @@ public class RectangleShip<T> extends BasicShip<T>{
    * This is a constructor to call its parent class to initilize the class.
    * @param upperLeft is the anchor of the ship. SimpleShipDisplayInfo incorporate the information needed when displaying the ship.
    */
-  public RectangleShip(String name, Coordinate upperLeft, int width, int height, SimpleShipDisplayInfo<T> sim) {
-    super(makeCoords(upperLeft, width, height), sim);
+  public RectangleShip(String name, Coordinate upperLeft, int width, int height, SimpleShipDisplayInfo<T> me, SimpleShipDisplayInfo<T> enemy) {
+    super(makeCoords(upperLeft, width, height), me, enemy);
     this.name = name;
   }
 
