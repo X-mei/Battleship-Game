@@ -27,6 +27,11 @@ public class BoardTextView {
 
   }
 
+  /**
+   * This is helper to create the board view
+   * @param the function to use when creating the body of the text view(self or enemy)
+   * @return the board view as a string.
+   */
   protected String displayAnyBoard(Function<Coordinate, Character> getSquareFn) {
     String result = makeHeader();
     for (int i = 0; i < toDisplay.getHeight(); i++) {
@@ -35,13 +40,57 @@ public class BoardTextView {
     result += makeHeader();
     return result;
   }
-  
+
+  /**
+   * This create the board of the board of current user
+   * @return the board view as a string.
+   */
   public String displayMyOwnBoard() {
     return displayAnyBoard((c)->toDisplay.whatIsAtForSelf(c));
   }
 
+  /**
+   * This create the board of the board of enemy user
+   * @return the board view as a string.
+   */
   public String displayEnemyBoard() {
     return displayAnyBoard((c)->toDisplay.whatIsAtForEnemy(c));
+  }
+
+  /**
+   * This concatenate two board text view into one huge string
+   * @param the view of enemie's board, the header for this board and the header to opponent's board
+   * @return the combined board view as a string.
+   */
+  public String displayMyBoardWithEnemyNextToIt(BoardTextView enemyView, String myHeader, String enemyHeader) {
+    String myBoard = this.displayMyOwnBoard();
+    String [] myLines = myBoard.split("\n");
+    String enemyBoard = enemyView.displayEnemyBoard();
+    String [] enemyLines = enemyBoard.split("\n");
+    assert(myLines.length == enemyLines.length);
+    StringBuilder builder = new StringBuilder();
+    builder.append("\n");
+    builder.append("    ");
+    builder.append(myHeader);
+    int spaces = 2*toDisplay.getWidth()+27-myHeader.length();
+    while (spaces-->0) {
+      builder.append(" ");
+    }
+    builder.append(enemyHeader);
+    builder.append("\n");
+    for (int i = 0; i < myLines.length; i++){
+      builder.append(myLines[i]);
+      if (i == 0 || i == myLines.length - 1) {
+        builder.append("  ");
+      }
+      int spaceCount = 26;
+      while (spaceCount-->0) {
+        builder.append(" ");
+      }
+      builder.append(enemyLines[i]);
+      builder.append("\n");
+    }
+    return builder.toString();
   }
 
   /**
@@ -61,6 +110,10 @@ public class BoardTextView {
     return ans.toString();
   }
 
+  /**
+   * This makes the data line.
+   * @return the row to create and function to call to create it
+   */
   private String makeLines(int row, Function<Coordinate, Character> getSquareFn) {
     char Mark = 'A';
     Mark += row;

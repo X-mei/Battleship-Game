@@ -74,6 +74,7 @@ public class TextPlayer {
     }
   }
 
+  
   /**
    * This function set up the mapping between ship type and corresponding ship creation function.
    */
