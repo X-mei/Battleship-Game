@@ -76,6 +76,16 @@ public class BattleShipBoard<T> implements Board<T>{
     return null;
   }
 
+  @Override
+  public Boolean hasLost() {
+    for (Ship<T> s : myShips) {
+      if (!s.isSunk()) {
+        return false;
+      }
+    }
+    return true;
+  }
+  
   protected T whatIsAt(Coordinate where, boolean isSelf) {
     for (Ship<T> s: myShips) {
       if (s.occupiesCoordinates(where)){

@@ -45,17 +45,10 @@ public interface Board<T> {
    * @return the ship that has been hit after beeing hit. If not found, record hit misses and return null.
    */
   public Ship<T> fireAt(Coordinate c);
+
+  /**
+   * This function checks if all the ship on this board is sunk.
+   * @return true if yes/false if not.
+   */
+  public Boolean hasLost();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

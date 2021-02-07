@@ -63,11 +63,27 @@ public class BoardTextViewTest {
     assertEquals(expected1, view.displayMyOwnBoard());
     assertEquals(expected2, view.displayEnemyBoard());
   }
+
+  @Test
+  public void test_display_two_boards() {
+    Board<Character> b1 = new BattleShipBoard<Character>(3, 3, 'X');
+    Board<Character> b2 = new BattleShipBoard<Character>(3, 3, 'X');
+    BoardTextView view1 = new BoardTextView(b1);
+    BoardTextView view2 = new BoardTextView(b2);
+    String myHeader = "YB";
+    String enemyHeader = "EB";
+    String expected =
+          "\n"+
+          "    "+"YB"+"                               "+"EB\n"+
+          "  0|1|2                              0|1|2\n" + 
+          "A  | |  A                          A  | |  A\n"+
+          "B  | |  B                          B  | |  B\n"+
+          "C  | |  C                          C  | |  C\n"+
+          "  0|1|2                              0|1|2\n";
+    assertEquals(expected, view1.displayMyBoardWithEnemyNextToIt(view2, myHeader, enemyHeader));
+
+  }
 }
-
-
-
-
 
 
 

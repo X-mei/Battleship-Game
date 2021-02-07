@@ -99,6 +99,28 @@ public class BattleShipBoardTest {
     //assertEquals(set, );
   }
   
+  @Test
+  void test_if_lost() {
+    Board<Character> b = new BattleShipBoard<Character>(10, 20, 'X');
+    Placement p1 = new Placement("A0H");
+    Placement p2 = new Placement("B2v");
+    V1ShipFactory<Character> f = new V1ShipFactory <Character>();
+    Ship<Character> s1 = f.makeSubmarine(p1);
+    Ship<Character> s2 = f.makeBattleship(p2);
+    b.tryAddShip(s1);
+    b.tryAddShip(s2);
+    assertEquals(false, b.hasLost());
+    assertSame(s1, b.fireAt(new Coordinate(0, 1)));
+    assertSame(s1, b.fireAt(new Coordinate(0, 0)));
+    assertEquals(false, b.hasLost());
+    assertSame(s2, b.fireAt(new Coordinate(1, 2)));
+    assertSame(s2, b.fireAt(new Coordinate(2, 2)));
+    assertEquals(false, b.hasLost());
+    assertSame(s2, b.fireAt(new Coordinate(3, 2)));
+    assertSame(s2, b.fireAt(new Coordinate(4, 2)));
+    assertEquals(true, b.hasLost());
+  }
+  
   private <T> void checkWhatIsAtBoard(Board<T> b, T[][] expected){
     for (int i=0; i<b.getHeight(); i++){
       for (int j=0; j<b.getWidth(); j++){

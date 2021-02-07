@@ -38,16 +38,32 @@ public class TextPlayer {
 
   /**
    * This function prompt the user for a input.
+   * @param things to prompt the user for.
    * @return the placement after the conversion.
-   * @throws IOException if the input readline fails.
+   * @throws IOException if the input readline fails, IllegalArgumentException if the input is invalid.
    */
-  public Placement readPlacement(String prompt) throws IOException {
+  public Placement readPlacement(String prompt) throws IOException, IllegalArgumentException {
     out.println(prompt);
     String s = inputReader.readLine();
     if (s == null) {
       throw new IOException();
     }
     return new Placement(s);
+  }
+
+  /**
+   * This function prompt the user for a input.
+   * @param things to prompt the user for.
+   * @return the coordinate after the conversion.
+   * @throws IOException if the input readline fails, IllegalArgumentException if the input is invalid.
+   */
+  public Coordinate readCoordinate(String prompt) throws IOException, IllegalArgumentException {
+    out.println(prompt);
+    String s = inputReader.readLine();
+    if (s == null) {
+      throw new IOException();
+    }
+    return new Coordinate(s);
   }
 
   /**
@@ -59,7 +75,7 @@ public class TextPlayer {
     Boolean success = false;
     while (!success) {
       try {
-        Placement p = readPlacement("Player " + name + " where would you like to place a " + shipName + "?");
+        Placement p = readPlacement(name + ", where would you like to place a " + shipName + "?");
         Ship<Character> ship = shipCreationFns.get(shipName).apply(p);
         String result = theBoard.tryAddShip(ship);
         if (result != null) {
@@ -74,6 +90,52 @@ public class TextPlayer {
     }
   }
 
+  /**
+   * This function checks if the player have lost by calling the function of the board.
+   * @return true if the player have lost, false other wise.
+   */
+  public Boolean checkIfLost() {
+    return theBoard.hasLost();
+  }
+
+  /**
+   * This function have the current player to fire at a certain location on the enemy board.
+   * @param enemy's board and the view of that board.
+   * @throws IOException if the input readline fails.
+   */
+  public void playOneTurn(Board<Character> enemyBoard, BoardTextView enemyView) throws IOException {
+    Boolean success = false;
+    while (!success) {
+      try{
+        Coordinate c = readCoordinate(name + ", where would you like to fire at?");
+        enemyBoard.fireAt(c);
+        success = true;
+      }
+      catch(IllegalArgumentException ilg){
+        out.println(ilg.getMessage());
+      }
+    }
+    out.println(view.displayMyBoardWithEnemyNextToIt(enemyView, "Your Ocean", "Opponent's Ocean"));
+    if (enemyBoard.hasLost()) {
+      out.println(name+" Won!"); 
+    }
+  }
+  
+  /**
+   * This function display the message explaining basic rules on placing the ships.
+   */
+  public void displayExplainMessage() {
+    out.println(view.displayMyOwnBoard());
+    out.println(name+" you are going to place the following ships (which are all\n"+
+                   "rectangular). For each ship, type the coordinate of the upper left\n"+
+                   "side of the ship, followed by either H (for horizontal) or V (for\n"+
+                   "vertical).  For example M4H would place a ship horizontally starting\n"+
+                   "at M4 and going to the right.  You have\n\n"+
+                   "2 Submarines ships that are 1x2\n"+
+                   "3 Destroyers that are 1x3\n"+
+                   "3 Battleships that are 1x4\n"+
+                   "2 Carriers that are 1x6\n");
+  }
   
   /**
    * This function set up the mapping between ship type and corresponding ship creation function.

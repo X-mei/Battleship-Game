@@ -26,18 +26,38 @@ public class App {
   }
 
   /**
-   * This method execute one placement phase where one ship is put on the board of each player.
+   * This method execute one placement phase where ships for both player is put on the board of each player's board.
    * @throws IOException if the doOnePlacement throws a IOException.
    */
-  public void doPlacementPhase() throws IOException{
+  public void doPlacementPhase() throws IOException {
+    p1.displayExplainMessage();
     for (String str : p1.shipsToPlace) {
       p1.doOnePlacement(str);
     }
+    p2.displayExplainMessage();
     for (String str : p2.shipsToPlace) {
       p2.doOnePlacement(str);
     }
   }
 
+  /**
+   * This method execute the attack phase where two player take turns in attacking eachother.
+   * The phase is ended when one player lost
+   * @throws IOException if the playOneTurn throws a IOException.
+   */
+  public void doAttackingPhase() throws IOException {
+    while (true) {
+      p1.playOneTurn(p2.theBoard, p2.view);
+      if (p2.checkIfLost()) {
+        break;
+      }
+      p2.playOneTurn(p1.theBoard, p1.view);
+      if (p1.checkIfLost()) {
+        break;
+      }
+    }
+  }
+  
   /**
    * This function runs the main program setting up two players and have each player place one ship on their board.
    */
@@ -46,6 +66,7 @@ public class App {
     Board<Character> b2 = new BattleShipBoard<Character>(10, 20, 'X');
     App app = new App(b1, b2, new BufferedReader(new InputStreamReader(System.in)), System.out);
     app.doPlacementPhase();
+    app.doAttackingPhase();
   }
 }
 
