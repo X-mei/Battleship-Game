@@ -81,38 +81,39 @@ public class TextPlayerTest {
     player2.doOnePlacement("Destroyer");
     bytes.reset();
     String expected1 =
-          
-          "A, where would you like to fire at?\n"+
-          "Invalid coordinate column.\n"+
-          "A, where would you like to fire at?\n"+
-          "You hit a Destroyer!\n"+
           "\n"+
           "    "+"Your Ocean"+"                       "+"Opponent's Ocean\n"+
           "  0|1|2                              0|1|2\n" +
-          "A d|d|d A                          A d| |  A\n"+
+          "A d|d|d A                          A  | |  A\n"+
           "B  | |  B                          B  | |  B\n"+
           "C d|d|d C                          C  | |  C\n"+
-          "  0|1|2                              0|1|2\n\n";
-    String expected2 =
+          "  0|1|2                              0|1|2\n\n"+
           "A, where would you like to fire at?\n"+
-          "You missed.\n"+
+          "Invalid coordinate column.\n"+
+          "A, where would you like to fire at?\n"+
+          "You hit a Destroyer!\n";
+          
+    String expected2 =
           "\n"+
           "    "+"Your Ocean"+"                       "+"Opponent's Ocean\n"+
           "  0|1|2                              0|1|2\n" + 
           "A d|d|d A                          A d| |  A\n"+
-          "B  | |  B                          B  |X|  B\n"+
+          "B  | |  B                          B  | |  B\n"+
           "C d|d|d C                          C  | |  C\n"+
-          "  0|1|2                              0|1|2\n\n";
-    String expected3 =
+          "  0|1|2                              0|1|2\n\n"+
           "A, where would you like to fire at?\n"+
-          "You hit a Destroyer!\n"+
+          "You missed.\n";
+          
+    String expected3 =
           "\n"+
           "    "+"Your Ocean"+"                       "+"Opponent's Ocean\n"+
           "  0|1|2                              0|1|2\n" + 
           "A d|d|d A                          A d| |d A\n"+
           "B  | |  B                          B d|X|d B\n"+
-          "C d|d|d C                          C d| |d C\n"+
+          "C d|d|d C                          C d| |  C\n"+
           "  0|1|2                              0|1|2\n\n"+
+          "A, where would you like to fire at?\n"+
+          "You hit a Destroyer!\n"+
           "A Won!\n";
       
     player1.playOneTurn(player2.theBoard, player2.view);

@@ -110,6 +110,7 @@ public class TextPlayer {
    */
   public void playOneTurn(Board<Character> enemyBoard, BoardTextView enemyView) throws IOException {
     Boolean success = false;
+    out.println(view.displayMyBoardWithEnemyNextToIt(enemyView, "Your Ocean", "Opponent's Ocean"));
     while (!success) {
       try{
         Coordinate c = readCoordinate(name + ", where would you like to fire at?");
@@ -126,7 +127,6 @@ public class TextPlayer {
         out.println(ilg.getMessage());
       }
     }
-    out.println(view.displayMyBoardWithEnemyNextToIt(enemyView, "Your Ocean", "Opponent's Ocean"));
     if (enemyBoard.hasLost()) {
       out.println(name+" Won!"); 
     }
