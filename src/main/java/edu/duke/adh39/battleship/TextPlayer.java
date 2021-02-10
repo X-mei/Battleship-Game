@@ -22,7 +22,10 @@ public class TextPlayer {
   final ArrayList<String> shipsToPlace;
   final HashMap<String, Function<Placement, Ship<Character>>> shipCreationFns;
 
-  
+  /**
+   * This constructor initialize all the field in the textplayer class.
+   * @param name of the player, the board that belongs to the player, the place to read input from and the place to dump output to, finally the class to create different ships.
+   */
   public TextPlayer(String name, Board<Character> theBoard, BufferedReader inputSource, PrintStream out, AbstractShipFactory<Character> factory) {
     this.name = name;
     this.theBoard = theBoard;
@@ -37,7 +40,7 @@ public class TextPlayer {
   }
 
   /**
-   * This function prompt the user for a input.
+   * This function prompt the user for a placement input.
    * @param things to prompt the user for.
    * @return the placement after the conversion.
    * @throws IOException if the input readline fails, IllegalArgumentException if the input is invalid.
@@ -100,6 +103,8 @@ public class TextPlayer {
 
   /**
    * This function have the current player to fire at a certain location on the enemy board.
+   * It will display information telling whether the fire was a hit and what type of ship if hit.
+   * Illegal coordinate input is also handled at this level.
    * @param enemy's board and the view of that board.
    * @throws IOException if the input readline fails.
    */
@@ -108,8 +113,14 @@ public class TextPlayer {
     while (!success) {
       try{
         Coordinate c = readCoordinate(name + ", where would you like to fire at?");
-        enemyBoard.fireAt(c);
+        Ship<Character> s = enemyBoard.fireAt(c);
         success = true;
+        if (s == null) {
+          out.println("You missed.");
+        }
+        else {
+          out.println("You hit a "+s.getName()+"!");
+        }
       }
       catch(IllegalArgumentException ilg){
         out.println(ilg.getMessage());
@@ -122,7 +133,7 @@ public class TextPlayer {
   }
   
   /**
-   * This function display the message explaining basic rules on placing the ships.
+   * This function display the message explaining basic rules on placing the ships along with a empty board.
    */
   public void displayExplainMessage() {
     out.println(view.displayMyOwnBoard());
@@ -135,6 +146,13 @@ public class TextPlayer {
                    "3 Destroyers that are 1x3\n"+
                    "3 Battleships that are 1x4\n"+
                    "2 Carriers that are 1x6\n");
+  }
+
+  /**
+   * This function display the current board.
+   */
+  public void simpleDisplayBoard() {
+    out.println(view.displayMyOwnBoard());
   }
   
   /**

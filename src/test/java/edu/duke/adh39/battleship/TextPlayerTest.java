@@ -85,6 +85,7 @@ public class TextPlayerTest {
           "A, where would you like to fire at?\n"+
           "Invalid coordinate column.\n"+
           "A, where would you like to fire at?\n"+
+          "You hit a Destroyer!\n"+
           "\n"+
           "    "+"Your Ocean"+"                       "+"Opponent's Ocean\n"+
           "  0|1|2                              0|1|2\n" +
@@ -94,6 +95,7 @@ public class TextPlayerTest {
           "  0|1|2                              0|1|2\n\n";
     String expected2 =
           "A, where would you like to fire at?\n"+
+          "You missed.\n"+
           "\n"+
           "    "+"Your Ocean"+"                       "+"Opponent's Ocean\n"+
           "  0|1|2                              0|1|2\n" + 
@@ -103,6 +105,7 @@ public class TextPlayerTest {
           "  0|1|2                              0|1|2\n\n";
     String expected3 =
           "A, where would you like to fire at?\n"+
+          "You hit a Destroyer!\n"+
           "\n"+
           "    "+"Your Ocean"+"                       "+"Opponent's Ocean\n"+
           "  0|1|2                              0|1|2\n" + 

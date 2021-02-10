@@ -14,11 +14,19 @@ public class BattleShipBoard<T> implements Board<T>{
   private final PlacementRuleChecker<T> placementChecker;
   private final HashSet<Coordinate> enemyMisses;
   private final T missInfo;
-  
+
+  /**
+   * This constructor construct a battleshipboard with a given size and a information to display when misses. It will use default rule checking
+   * @param width and height as well as information to display when miss.
+   */
   public BattleShipBoard(int w, int h, T missInfo) {
     this(w, h, new NoCollisionRuleChecker<T>(new InBoundsRuleChecker<T>(null)), missInfo);
   }
 
+  /**
+   * This constructor construct a battleshipboard with a given size and a information to display when misses. It use custimize rule checking.
+   * @param width and height, rule to apply when checking, as well as information to display when miss.
+   */
   public BattleShipBoard(int w, int h, PlacementRuleChecker<T> rule, T missInfo) {
     if (w <= 0) {
       throw new IllegalArgumentException("BattleShipBoard's width must be positive but is " + w);
@@ -85,7 +93,11 @@ public class BattleShipBoard<T> implements Board<T>{
     }
     return true;
   }
-  
+
+  /**
+   * This a function that determine what to print at given coordinate..
+   * @param where is the coordinate to check, isSelf determines who is trying to see this board.
+   */
   protected T whatIsAt(Coordinate where, boolean isSelf) {
     for (Ship<T> s: myShips) {
       if (s.occupiesCoordinates(where)){
