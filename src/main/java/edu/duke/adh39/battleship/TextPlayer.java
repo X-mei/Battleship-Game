@@ -21,6 +21,8 @@ public class TextPlayer {
   final String name;
   final ArrayList<String> shipsToPlace;
   final HashMap<String, Function<Placement, Ship<Character>>> shipCreationFns;
+  final Integer moveCount;
+  final Integer sonarCount;
 
   /**
    * This constructor initialize all the field in the textplayer class.
@@ -37,6 +39,8 @@ public class TextPlayer {
     this.shipCreationFns = new HashMap<String, Function<Placement, Ship<Character>>>();
     setupShipCreationMap();
     setupShipCreationList();
+    this.moveCount = 3;
+    this.sonarCount = 3;
   }
 
   /**
@@ -55,7 +59,7 @@ public class TextPlayer {
   }
 
   /**
-   * This function prompt the user for a input.
+   * This function prompt the user for a Coordinate input.
    * @param things to prompt the user for.
    * @return the coordinate after the conversion.
    * @throws IOException if the input readline fails, IllegalArgumentException if the input is invalid.
@@ -70,12 +74,35 @@ public class TextPlayer {
   }
 
   /**
+   * This function prompt the user for a action input.
+   * @param things to prompt the user for.
+   * @return the coordinate after the conversion.
+   * @throws IOException if the input readline fails, IllegalArgumentException if the input is invalid.
+   */
+  public String readAction(String prompt) throws IOException, IllegalArgumentException {
+    out.println(prompt);
+    String s = inputReader.readLine();
+    if (s == null) {
+      throw new IOException();
+    }
+    s = s.toUpperCase();
+    if (s.length() != 1) {
+      throw new IllegalArgumentException("Illegal argument length, have to be a single character.");
+    }
+    if (s != "F" || s != "M" || s != "S") {
+      throw new IllegalArgumentException("Illegal argument, can be either F, M or S.");
+    }
+    return s;
+  }
+
+  /**
    * This function place a ship on the board and display the board afterwards.
    * It also handles all the previous IllegalArgumentException.
    * @throws IOException if the input outputing the result fails.
    */
   public void doOnePlacement(String shipName) throws IOException {
     Boolean success = false;
+    
     while (!success) {
       try {
         Placement p = readPlacement(name + ", where would you like to place a " + shipName + "?");
@@ -92,7 +119,7 @@ public class TextPlayer {
       }
     }
   }
-
+  
   /**
    * This function checks if the player have lost by calling the function of the board.
    * @return true if the player have lost, false other wise.
@@ -102,15 +129,27 @@ public class TextPlayer {
   }
 
   /**
+   * This function realize one turn of the attacking phase of a player in version 1.
+   * It calls two helper function to realize the functionalities.
+   * Illegal coordinate input is also handled at this level.
+   * @param enemy's board and the view of that board.
+   * @throws IOException if the input readline fails.
+   */
+  public void playOneTurnV1(Board<Character> enemyBoard, BoardTextView enemyView) throws IOException {
+    displayBothBoard(enemyView);
+    fireAction(enemyBoard);
+  }
+
+  /**
    * This function have the current player to fire at a certain location on the enemy board.
    * It will display information telling whether the fire was a hit and what type of ship if hit.
    * Illegal coordinate input is also handled at this level.
    * @param enemy's board and the view of that board.
    * @throws IOException if the input readline fails.
    */
-  public void playOneTurn(Board<Character> enemyBoard, BoardTextView enemyView) throws IOException {
+  private void fireAction(Board<Character> enemyBoard) throws IOException
+  {
     Boolean success = false;
-    out.println(view.displayMyBoardWithEnemyNextToIt(enemyView, "Your Ocean", "Opponent's Ocean"));
     while (!success) {
       try{
         Coordinate c = readCoordinate(name + ", where would you like to fire at?");
@@ -123,13 +162,61 @@ public class TextPlayer {
           out.println("You hit a "+s.getName()+"!");
         }
       }
-      catch(IllegalArgumentException ilg){
+      catch(IllegalArgumentException ilg) {
         out.println(ilg.getMessage());
       }
     }
     if (enemyBoard.hasLost()) {
       out.println(name+" Won!"); 
     }
+  }
+
+  /**
+   * This function have the current player move a ship to another location.
+   * Illegal coordinate input is handled at this level.
+   * @throws IOException if the input readline fails.
+   */
+  private void moveAction() throws IOException {
+    
+  }
+
+  /**
+   * This function have the current player scan a portion of the enemy's board.
+   * It will display how many squares each type of ship occupies.
+   * Illegal coordinate input is also handled at this level.
+   * @param enemy's board.
+   * @throws IOException if the input readline fails.
+   */
+  private void scanAction(Board<Character> enemyBoard) throws IOException {
+    
+  }
+  /**
+   * This function realize one turn of the attacking phase of a player in version 2.
+   * It calls two helper function to realize the functionalities.
+   * Illegal coordinate input is also handled at this level.
+   * @param enemy's board and the view of that board.
+   * @throws IOException if the input readline fails.
+   */
+  public void playOneTurnV2(Board<Character> enemyBoard, BoardTextView enemyView) throws IOException {
+    Boolean success = false;
+    while (!success) {
+      try {
+        String action = readAction(name + ", what would you like to do?");
+        if (action == "F") {
+          fireAction(enemyBoard);
+        }
+        else if (action == "M") {
+          //moveAction();
+        }
+        else {//Scan
+          //scanAction();
+        }
+      }
+      catch (IllegalArgumentException ilg) {
+        out.println(ilg.getMessage());
+      }
+    }
+    
   }
   
   /**
@@ -153,6 +240,13 @@ public class TextPlayer {
    */
   public void simpleDisplayBoard() {
     out.println(view.displayMyOwnBoard());
+  }
+
+  /**
+   * This function display the current board of you and the enemy.
+   */
+  private void displayBothBoard(BoardTextView enemyView) {
+    out.println(view.displayMyBoardWithEnemyNextToIt(enemyView, "Your Ocean", "Opponent's Ocean"));
   }
   
   /**

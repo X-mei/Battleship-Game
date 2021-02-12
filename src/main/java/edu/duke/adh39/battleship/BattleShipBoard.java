@@ -1,7 +1,9 @@
 package edu.duke.adh39.battleship;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.lang.Math;
 /**
  * This class implements the board class and It is
  * generic in typename T, which is the type of information the view needs to
@@ -13,6 +15,7 @@ public class BattleShipBoard<T> implements Board<T>{
   private final ArrayList<Ship<T>> myShips;
   private final PlacementRuleChecker<T> placementChecker;
   private final HashSet<Coordinate> enemyMisses;
+  private final HashMap<Coordinate, T> enemyHits;
   private final T missInfo;
 
   /**
@@ -40,6 +43,7 @@ public class BattleShipBoard<T> implements Board<T>{
     this.placementChecker = rule;
     this.enemyMisses = new HashSet<Coordinate>();
     this.missInfo = missInfo;
+    this.enemyHits = new HashMap<Coordinate,T>();
   }
     
   @Override
@@ -77,6 +81,7 @@ public class BattleShipBoard<T> implements Board<T>{
     for (Ship<T> s: myShips){
       if (s.occupiesCoordinates(c)){
         s.recordHitAt(c);
+        enemyHits.put(c, s.getDisplayInfoAt(c, false));
         return s;
       }
     }
@@ -94,19 +99,61 @@ public class BattleShipBoard<T> implements Board<T>{
     return true;
   }
 
+  @Override
+  public HashMap<String, Integer> sonarScan(Coordinate c){
+    HashMap<String, Integer> result = new HashMap<String, Integer>();
+    for (int i = c.getRow() - 3; i < c.getRow() + 4; ++i) {
+      Integer diff = Math.abs(c.getRow()-i);
+      for (int j = c.getColumn() - 3 + diff; j < c.getColumn() + 4 - diff; ++j) {
+        String sName = this.getNameAt(new Coordinate(i, j));
+        if (sName == null) {
+          continue;
+        }
+        else {
+          if (result.get(sName) == null){
+            result.put(sName, 1);
+          }
+          else {
+            result.put(sName, result.get(sName)+1);
+          }
+        }
+      }
+    }
+    return result;
+  }
+  
   /**
-   * This a function that determine what to print at given coordinate..
+   * This a function that determine what to print at given coordinate.
    * @param where is the coordinate to check, isSelf determines who is trying to see this board.
    */
   protected T whatIsAt(Coordinate where, boolean isSelf) {
-    for (Ship<T> s: myShips) {
-      if (s.occupiesCoordinates(where)){
-        return s.getDisplayInfoAt(where, isSelf);
+    if (isSelf) {
+      for (Ship<T> s: myShips) {
+        if (s.occupiesCoordinates(where)){
+          return s.getDisplayInfoAt(where, true);
+        }
       }
     }
-    if (!isSelf) {
+    else {
       if (enemyMisses.contains(where)) {
         return missInfo;
+      }
+      if (enemyHits.containsKey(where)) {
+        return enemyHits.get(where);
+      }
+    }
+    return null;
+  }
+
+  /**
+   * This a helper function that determine the name of ship at given coordinate.
+   * @param where is the coordinate to check.
+   * @return the name of the ship, or null if no ship at given coordinate.
+   */
+  protected String getNameAt(Coordinate where) {
+    for (Ship<T> s : myShips) {
+      if (s.occupiesCoordinates(where)) {
+        return s.getName();
       }
     }
     return null;

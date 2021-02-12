@@ -53,6 +53,8 @@ public class RectangleShip<T> extends BasicShip<T>{
     super(makeCoords(upperLeft, width, height), me, enemy, name);
   }
 
+  
+
 }
 
 

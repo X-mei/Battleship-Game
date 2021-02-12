@@ -49,11 +49,11 @@ public class App {
    */
   public void doAttackingPhase() throws IOException {
     while (true) {
-      p1.playOneTurn(p2.theBoard, p2.view);
+      p1.playOneTurnV1(p2.theBoard, p2.view);
       if (p2.checkIfLost()) {
         break;
       }
-      p2.playOneTurn(p1.theBoard, p1.view);
+      p2.playOneTurnV1(p1.theBoard, p1.view);
       if (p1.checkIfLost()) {
         break;
       }

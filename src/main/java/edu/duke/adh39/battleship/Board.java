@@ -1,5 +1,7 @@
 package edu.duke.adh39.battleship;
 
+import java.util.HashMap;
+import java.lang.Boolean;
 /**
  * This interface represents any type of Board in our Battleship game. It is
  * generic in typename T, which is the type of information the view needs to
@@ -51,4 +53,23 @@ public interface Board<T> {
    * @return true if yes/false if not.
    */
   public Boolean hasLost();
+
+  /**
+   * This function realize the sonar scan functionality.
+   * @return the hash map of a map different ship and how many square they occupy.
+   */
+  public HashMap<String, Integer> sonarScan(Coordinate c);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
