@@ -26,17 +26,17 @@ public class CarrierShip<T> extends BasicShip<T> {
       set.add(c6);
     }
     else if (ori == 'L'){
-      Coordinate c1 = new Coordinate(topLeft.getRow(), topLeft.getColumn());
+      Coordinate c1 = new Coordinate(topLeft.getRow() + 1, topLeft.getColumn() + 4);
       set.add(c1);
-      Coordinate c2 = new Coordinate(topLeft.getRow(), topLeft.getColumn() + 1);
+      Coordinate c2 = new Coordinate(topLeft.getRow() + 1, topLeft.getColumn() + 3);
       set.add(c2);
-      Coordinate c3 = new Coordinate(topLeft.getRow(), topLeft.getColumn() + 2);
+      Coordinate c3 = new Coordinate(topLeft.getRow() + 1, topLeft.getColumn() + 2);
       set.add(c3);
-      Coordinate c4 = new Coordinate(topLeft.getRow() + 1, topLeft.getColumn() + 2);
+      Coordinate c4 = new Coordinate(topLeft.getRow(), topLeft.getColumn() + 2);
       set.add(c4);
-      Coordinate c5 = new Coordinate(topLeft.getRow() + 1, topLeft.getColumn() + 3);
+      Coordinate c5 = new Coordinate(topLeft.getRow(), topLeft.getColumn() + 1);
       set.add(c5);
-      Coordinate c6 = new Coordinate(topLeft.getRow() + 1, topLeft.getColumn() + 4);
+      Coordinate c6 = new Coordinate(topLeft.getRow(), topLeft.getColumn());
       set.add(c6);
     }
     else if (ori == 'R'){
@@ -54,17 +54,17 @@ public class CarrierShip<T> extends BasicShip<T> {
       set.add(c6);
     }
     else {
-      Coordinate c1 = new Coordinate(topLeft.getRow(), topLeft.getColumn() + 1);
+      Coordinate c1 = new Coordinate(topLeft.getRow() + 4, topLeft.getColumn());
       set.add(c1);
-      Coordinate c2 = new Coordinate(topLeft.getRow() + 1, topLeft.getColumn() + 1);
+      Coordinate c2 = new Coordinate(topLeft.getRow() + 3, topLeft.getColumn());
       set.add(c2);
-      Coordinate c3 = new Coordinate(topLeft.getRow() + 2, topLeft.getColumn() + 1);
+      Coordinate c3 = new Coordinate(topLeft.getRow() + 2, topLeft.getColumn());
       set.add(c3);
-      Coordinate c4 = new Coordinate(topLeft.getRow() + 2, topLeft.getColumn());
+      Coordinate c4 = new Coordinate(topLeft.getRow() + 2, topLeft.getColumn() + 1);
       set.add(c4);
-      Coordinate c5 = new Coordinate(topLeft.getRow() + 3, topLeft.getColumn());
+      Coordinate c5 = new Coordinate(topLeft.getRow() + 1, topLeft.getColumn() + 1);
       set.add(c5);
-      Coordinate c6 = new Coordinate(topLeft.getRow() + 4, topLeft.getColumn());
+      Coordinate c6 = new Coordinate(topLeft.getRow(), topLeft.getColumn() + 1);
       set.add(c6);
     }
     return set;

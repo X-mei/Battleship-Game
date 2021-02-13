@@ -188,7 +188,17 @@ public class TextPlayer {
    * @throws IOException if the input readline fails.
    */
   private void scanAction(Board<Character> enemyBoard) throws IOException {
-    
+    Boolean success = false;
+    while (!success) {
+      try {
+        Coordinate c = readCoordinate(name + ", where do you want to scan?");
+        HashMap<String, Integer> scanRes = enemyBoard.sonarScan(c);
+        scanRes.entrySet().forEach(entry->{System.out.println(entry.getKey() + " occupies " + entry.getValue() + " squares.");});
+      }
+      catch (IllegalArgumentException ilg) {
+        out.println(ilg.getMessage());
+      }
+    }
   }
   /**
    * This function realize one turn of the attacking phase of a player in version 2.
@@ -209,7 +219,7 @@ public class TextPlayer {
           //moveAction();
         }
         else {//Scan
-          //scanAction();
+          scanAction(enemyBoard);
         }
       }
       catch (IllegalArgumentException ilg) {

@@ -102,6 +102,10 @@ public class BattleShipBoard<T> implements Board<T>{
   @Override
   public HashMap<String, Integer> sonarScan(Coordinate c){
     HashMap<String, Integer> result = new HashMap<String, Integer>();
+    result.put("Submarine", 0);
+    result.put("Destroyer", 0);
+    result.put("Battleship", 0);
+    result.put("Carrier", 0);
     for (int i = c.getRow() - 3; i < c.getRow() + 4; ++i) {
       Integer diff = Math.abs(c.getRow()-i);
       for (int j = c.getColumn() - 3 + diff; j < c.getColumn() + 4 - diff; ++j) {
@@ -110,15 +114,11 @@ public class BattleShipBoard<T> implements Board<T>{
           continue;
         }
         else {
-          if (result.get(sName) == null){
-            result.put(sName, 1);
-          }
-          else {
-            result.put(sName, result.get(sName)+1);
-          }
+          result.put(sName, result.get(sName)+1);
         }
       }
     }
+    
     return result;
   }
   
