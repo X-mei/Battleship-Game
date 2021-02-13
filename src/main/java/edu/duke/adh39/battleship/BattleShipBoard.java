@@ -121,6 +121,21 @@ public class BattleShipBoard<T> implements Board<T>{
     
     return result;
   }
+
+  @Override
+  public void removeShip(Ship<T> s) {
+    myShips.remove(s);
+  }
+  
+  @Override
+  public Ship<T> getShipAt(Coordinate c) {
+    for (Ship<T> s : myShips) {
+      if (s.occupiesCoordinates(c)) {
+        return s;
+      }
+    }
+    return null;
+  }
   
   /**
    * This a function that determine what to print at given coordinate.
@@ -158,6 +173,7 @@ public class BattleShipBoard<T> implements Board<T>{
     }
     return null;
   }
+  
 }
 
 

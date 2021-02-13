@@ -59,6 +59,10 @@ public interface Board<T> {
    * @return the hash map of a map different ship and how many square they occupy.
    */
   public HashMap<String, Integer> sonarScan(Coordinate c);
+
+  public Ship<T> getShipAt(Coordinate c);
+
+  public void removeShip(Ship<T> s);
 }
 
 

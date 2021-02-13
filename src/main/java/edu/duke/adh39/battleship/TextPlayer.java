@@ -100,13 +100,13 @@ public class TextPlayer {
    * It also handles all the previous IllegalArgumentException.
    * @throws IOException if the input outputing the result fails.
    */
-  public void doOnePlacement(String shipName) throws IOException {
+  public Ship<Character> doOnePlacement(String shipName) throws IOException {
     Boolean success = false;
-    
+    Ship<Character> ship = null;
     while (!success) {
       try {
         Placement p = readPlacement(name + ", where would you like to place a " + shipName + "?");
-        Ship<Character> ship = shipCreationFns.get(shipName).apply(p);
+        ship = shipCreationFns.get(shipName).apply(p);
         String result = theBoard.tryAddShip(ship);
         if (result != null) {
           throw new IllegalArgumentException(result);
@@ -118,6 +118,7 @@ public class TextPlayer {
         out.println(ilg.getMessage());
       }
     }
+    return ship;
   }
   
   /**
@@ -177,7 +178,22 @@ public class TextPlayer {
    * @throws IOException if the input readline fails.
    */
   private void moveAction() throws IOException {
-    
+    Boolean success = false;
+    while (!success) {
+      try {
+        Coordinate c = readCoordinate(name + ", select the ship to move?");
+        Ship<Character> sOld = theBoard.getShipAt(c);
+        if (sOld == null) {
+          throw new IllegalArgumentException("No ship at this location.");
+        }
+        Ship<Character> sNew = doOnePlacement(sOld.getName());
+        sNew.changeCoordinate(sOld);
+        theBoard.removeShip(sOld);
+      }
+      catch (IllegalArgumentException ilg) {
+        out.println(ilg.getMessage());
+      }
+    }
   }
 
   /**
@@ -208,6 +224,7 @@ public class TextPlayer {
    * @throws IOException if the input readline fails.
    */
   public void playOneTurnV2(Board<Character> enemyBoard, BoardTextView enemyView) throws IOException {
+    displayBothBoard(enemyView);
     Boolean success = false;
     while (!success) {
       try {
@@ -216,7 +233,7 @@ public class TextPlayer {
           fireAction(enemyBoard);
         }
         else if (action == "M") {
-          //moveAction();
+          moveAction();
         }
         else {//Scan
           scanAction(enemyBoard);
