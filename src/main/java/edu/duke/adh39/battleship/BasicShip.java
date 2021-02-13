@@ -1,6 +1,9 @@
 package edu.duke.adh39.battleship;
 
+import java.util.Iterator;
 import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * This class implement the interface class ship, supporting different method on ship.
@@ -20,8 +23,8 @@ public abstract class BasicShip<T> implements Ship<T> {
     for (Coordinate c: where){
       myPieces.put(c, false);
     }
-    this.myDisplayInfo = DisplayInfoMe;
-    this.enemyDisplayInfo = DisplayInfoEnemy;
+    myDisplayInfo = DisplayInfoMe;
+    enemyDisplayInfo = DisplayInfoEnemy;
     this.name = name;
   }
 
@@ -79,6 +82,21 @@ public abstract class BasicShip<T> implements Ship<T> {
   @Override
   public String getName() {
     return name;
+  }
+
+  @Override
+  public LinkedHashMap<Coordinate, Boolean> getPieces() {
+    return myPieces;
+  }
+
+  @Override
+  public void changeCoordinate(Ship<T> oldShip) {
+    LinkedHashMap<Coordinate, Boolean> oldPieces = oldShip.getPieces();
+    Iterator<Map.Entry<Coordinate, Boolean>> it = oldPieces.entrySet().iterator();
+    Set<Coordinate> keys = myPieces.keySet();
+    for (Coordinate c: keys){
+      myPieces.put(c, it.next().getValue());
+    }
   }
 }
 

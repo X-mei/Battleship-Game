@@ -1,11 +1,15 @@
 package edu.duke.adh39.battleship;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * This class extends the basic ship class.
  */
-public class RectangleShip<T> extends BasicShip<T>{
+public class RectangleShip<T> extends BasicShip<T> {
   /**
    * This is a helper function to create a hashset of all the coordinate
    * of a ship with the given specification.
@@ -22,7 +26,7 @@ public class RectangleShip<T> extends BasicShip<T>{
     }
     return set;
   }
-  
+
   /**
    * This is a simple constructor when the ship have unit width and height, it calls another
    * constructor of this class and pass it to its parent class to initilize the class
@@ -30,7 +34,8 @@ public class RectangleShip<T> extends BasicShip<T>{
    * when trying to display.
    */
   public RectangleShip(Coordinate upperLeft, T data, T onHit) {
-    this("testship", upperLeft, 1, 1, new SimpleShipDisplayInfo<T>(data, onHit), new SimpleShipDisplayInfo<T>(null, data));
+    this("testship", upperLeft, 1, 1, new SimpleShipDisplayInfo<T>(data, onHit),
+        new SimpleShipDisplayInfo<T>(null, data));
   }
 
   /**
@@ -40,27 +45,21 @@ public class RectangleShip<T> extends BasicShip<T>{
    * when trying to display.Width and height is the size of the ship.
    */
   public RectangleShip(String name, Coordinate upperLeft, int width, int height, T data, T onHit) {
-    this(name, upperLeft, width, height, new SimpleShipDisplayInfo<T>(data, onHit), new SimpleShipDisplayInfo<T>(null, data));
+    this(name, upperLeft, width, height, new SimpleShipDisplayInfo<T>(data, onHit),
+        new SimpleShipDisplayInfo<T>(null, data));
 
-    
   }
 
   /**
    * This is a constructor to call its parent class to initilize the class.
    * @param upperLeft is the anchor of the ship. SimpleShipDisplayInfo incorporate the information needed when displaying the ship.
    */
-  public RectangleShip(String name, Coordinate upperLeft, int width, int height, SimpleShipDisplayInfo<T> me, SimpleShipDisplayInfo<T> enemy) {
+  public RectangleShip(String name, Coordinate upperLeft, int width, int height, SimpleShipDisplayInfo<T> me,
+      SimpleShipDisplayInfo<T> enemy) {
     super(makeCoords(upperLeft, width, height), me, enemy, name);
   }
 
 }
-
-
-
-
-
-
-
-
+ 
 
 
