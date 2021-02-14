@@ -16,11 +16,6 @@ public class Placement {
   public Placement(Coordinate w, char o){
     this.where = w;
     char ori = Character.toUpperCase(o);
-    /*
-    if (ori != 'V' && ori != 'H'){
-      throw new IllegalArgumentException("Invalid placement orientation.");
-    }
-    */
     this.orientation = ori;
   }
 

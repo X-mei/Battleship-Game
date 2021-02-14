@@ -21,8 +21,8 @@ public class App {
    * @param theBoard1/theBoard2 is the board for two players to act on, inputSource/out is the place to read/write input from/to. 
    */
   public App(Board<Character> theBoard1, Board<Character> theBoard2, BufferedReader inputSource, PrintStream out) {
-    this.p1 = new TextPlayer("Player1", theBoard1, inputSource, out, new V1ShipFactory());
-    this.p2 = new TextPlayer("Player2", theBoard2, inputSource, out, new V1ShipFactory());
+    this.p1 = new TextPlayer("Player1", theBoard1, inputSource, out, new V1ShipFactory(), false);
+    this.p2 = new TextPlayer("Player2", theBoard2, inputSource, out, new V1ShipFactory(), false);
   }
 
   /**

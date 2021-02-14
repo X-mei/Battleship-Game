@@ -6,6 +6,8 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Random;
 import java.util.function.Function;
 
 /**
@@ -21,14 +23,16 @@ public class TextPlayer {
   final String name;
   final ArrayList<String> shipsToPlace;
   final HashMap<String, Function<Placement, Ship<Character>>> shipCreationFns;
+  final Boolean isComputer;
   protected Integer moveCount;
   protected Integer sonarCount;
+  
 
   /**
    * This constructor initialize all the field in the textplayer class.
    * @param name of the player, the board that belongs to the player, the place to read input from and the place to dump output to, finally the class to create different ships.
    */
-  public TextPlayer(String name, Board<Character> theBoard, BufferedReader inputSource, PrintStream out, AbstractShipFactory<Character> factory) {
+  public TextPlayer(String name, Board<Character> theBoard, BufferedReader inputSource, PrintStream out, AbstractShipFactory<Character> factory, Boolean isComputer) {
     this.name = name;
     this.theBoard = theBoard;
     this.view = new BoardTextView(theBoard);
@@ -41,6 +45,7 @@ public class TextPlayer {
     setupShipCreationList();
     this.moveCount = 3;
     this.sonarCount = 3;
+    this.isComputer = isComputer;
   }
 
   /**
@@ -59,6 +64,50 @@ public class TextPlayer {
   }
 
   /**
+   * This function generate a random placement.
+   * @return the generated placement.
+   */
+  public Placement randomPlacement(String shipName){
+    HashSet<Character> myHashSet = new HashSet<>();
+    if (shipName == "Submarine" || shipName == "Destroyer"){
+      myHashSet.add('H');
+      myHashSet.add('V');
+    }
+    else {
+      myHashSet.add('U');
+      myHashSet.add('L');
+      myHashSet.add('R');
+      myHashSet.add('D');
+    }
+    Character ori = randomCharacter(myHashSet);
+    return new Placement(randomCoordinate(), ori);
+  }
+
+  /**
+   * This function select a random character from a set.
+   * @param myHashSet is the pool to generate character from.
+   * @return the generated placement.
+   */
+  private Character randomCharacter(HashSet<Character> myHashSet) {
+    long s = 29;
+    Random random = new Random();
+    random.setSeed(s); 
+    int size = myHashSet.size();
+    int item = random.nextInt(size); 
+    int i = 0;
+    Character chr = null;
+    for(Character obj : myHashSet)
+    {
+      if (i == item){
+        chr = obj;
+        break;
+      }
+      i++;
+    }
+    return chr;
+  }
+
+  /**
    * This function prompt the user for a Coordinate input.
    * @param things to prompt the user for.
    * @return the coordinate after the conversion.
@@ -71,6 +120,19 @@ public class TextPlayer {
       throw new IOException();
     }
     return new Coordinate(s);
+  }
+
+  /**
+   * This function generate a random coordinate.
+   * @return the generated coordinate.
+   */
+  public Coordinate randomCoordinate() {
+    long s = 29;
+    Random random = new Random();
+    random.setSeed(s);
+    Integer row = random.ints(0, theBoard.getHeight()).findFirst().getAsInt();
+    Integer col = random.ints(0, theBoard.getWidth()).findFirst().getAsInt();
+    return new Coordinate(row, col);
   }
 
   /**
@@ -97,6 +159,18 @@ public class TextPlayer {
   }
 
   /**
+   * This function generate a random action.
+   * @return the generated coordinate.
+   */
+  public Character randomAction() {
+    HashSet<Character> myHashSet = new HashSet<>();
+    myHashSet.add('F');
+    myHashSet.add('M');
+    myHashSet.add('S');
+    return randomCharacter(myHashSet);
+  }
+  
+  /**
    * This function place a ship on the board and display the board afterwards.
    * It also handles all the previous IllegalArgumentException.
    * @throws IOException if the input outputing the result fails.
@@ -106,19 +180,27 @@ public class TextPlayer {
     Ship<Character> ship = null;
     while (!success) {
       try {
-        Placement p = readPlacement(name + ", where would you like to place a " + shipName + "?");
+        Placement p = null;
+        if (!isComputer) {
+          p = readPlacement(name + ", where would you like to place a " + shipName + "?");
+        }
+        else {
+          p = randomPlacement(shipName);//placeholder
+        }
         ship = shipCreationFns.get(shipName).apply(p);
         String result = theBoard.tryAddShip(ship);
         if (result != null) {
           throw new IllegalArgumentException(result);
         }
-        if (display) {
+        if (display && !isComputer) {
           simpleDisplayBoard();
         }
         success = true;
       }
       catch (IllegalArgumentException ilg){
-        out.println(ilg.getMessage());
+        if (!isComputer) {
+          out.println(ilg.getMessage());
+        }
       }
     }
     return ship;
@@ -140,7 +222,9 @@ public class TextPlayer {
    * @throws IOException if the input readline fails.
    */
   public void playOneTurnV1(Board<Character> enemyBoard, BoardTextView enemyView) throws IOException {
-    displayBothBoard(enemyView);
+    if (!isComputer) {
+      displayBothBoard(enemyView);
+    }
     fireAction(enemyBoard);
   }
 
@@ -156,18 +240,37 @@ public class TextPlayer {
     Boolean success = false;
     while (!success) {
       try{
-        Coordinate c = readCoordinate(name + ", where would you like to fire at?");
-        Ship<Character> s = enemyBoard.fireAt(c);
-        success = true;
-        if (s == null) {
-          out.println("You missed.");
+        Coordinate c = null;
+        if (!isComputer) {
+          c = readCoordinate(name + ", where would you like to fire at?");
         }
         else {
-          out.println("You hit a "+s.getName()+"!");
+          c = randomCoordinate();//placeholder
         }
+        Ship<Character> s = enemyBoard.fireAt(c);
+        success = true;
+        if (!isComputer) {
+          if (s == null) {
+            out.println("You missed.");
+          }
+          else {
+            out.println("You hit a "+s.getName()+"!");
+          }
+        }
+        else {
+          if (s == null) {
+            out.println(name + "Missed.");
+          }
+          else {
+            out.println(name + " hit your ship at:" + c.toString());
+          }
+        }
+        
       }
       catch(IllegalArgumentException ilg) {
-        out.println(ilg.getMessage());
+        if (!isComputer) {
+          out.println(ilg.getMessage());
+        }
       }
     }
     if (enemyBoard.hasLost()) {
@@ -184,7 +287,13 @@ public class TextPlayer {
     Boolean success = false;
     while (!success) {
       try {
-        Coordinate c = readCoordinate(name + ", select the ship to move?");
+        Coordinate c = null;
+        if (!isComputer) {
+          c = readCoordinate(name + ", select the ship to move?");
+        }
+        else {
+          c = randomCoordinate();//placeholder
+        }
         Ship<Character> sOld = theBoard.getShipAt(c);
         if (sOld == null) {
           throw new IllegalArgumentException("No ship at this location.");
@@ -192,11 +301,18 @@ public class TextPlayer {
         Ship<Character> sNew = doOnePlacement(sOld.getName(), false);
         sNew.changeCoordinate(sOld);
         theBoard.removeShip(sOld);
-        simpleDisplayBoard();
+        if (!isComputer) {
+          simpleDisplayBoard();
+        }
+        else {
+          out.println(name + " moved a ship.");
+        }
         success = true;
       }
       catch (IllegalArgumentException ilg) {
-        out.println(ilg.getMessage());
+        if (!isComputer) {
+          out.println(ilg.getMessage());
+        }
       }
     }
   }
@@ -212,13 +328,26 @@ public class TextPlayer {
     Boolean success = false;
     while (!success) {
       try {
-        Coordinate c = readCoordinate(name + ", where do you want to scan?");
+        Coordinate c = null;
+        if (!isComputer) {
+          c = readCoordinate(name + ", where do you want to scan?");
+        }
+        else {
+          c = randomCoordinate();//placeholder
+        }
         HashMap<String, Integer> scanRes = enemyBoard.sonarScan(c);
-        scanRes.entrySet().forEach(entry->{out.println(entry.getKey() + " occupies " + entry.getValue() + " squares.");});
+        if (!isComputer) {
+          scanRes.entrySet().forEach(entry->{out.println(entry.getKey() + " occupies " + entry.getValue() + " squares.");});
+        }
+        else {
+          out.println(name + " used a sonar scan.");
+        }
         success = true;
       }
       catch (IllegalArgumentException ilg) {
-        out.println(ilg.getMessage());
+        if (!isComputer) {
+          out.println(ilg.getMessage());
+        }
       }
     }
   }
@@ -230,11 +359,19 @@ public class TextPlayer {
    * @throws IOException if the input readline fails.
    */
   public void playOneTurnV2(Board<Character> enemyBoard, BoardTextView enemyView) throws IOException {
-    displayBothBoard(enemyView);
+    if (!isComputer) {
+      displayBothBoard(enemyView);
+    }
     Boolean success = false;
     while (!success) {
       try {
-        Character action = readAction(name + ", what would you like to do?");
+        Character action = null;
+        if (!isComputer) {
+          action = readAction(name + ", what would you like to do?");
+        }
+        else {
+          action = randomAction();//placeholder
+        }
         if (action == 'S' && sonarCount < 1) {
           throw new IllegalArgumentException("You have run out of usage of Sonar Scan.");
         }
@@ -255,7 +392,9 @@ public class TextPlayer {
         success = true;
       }
       catch (IllegalArgumentException ilg) {
-        out.println(ilg.getMessage());
+        if (!isComputer) {
+          out.println(ilg.getMessage());
+        }
       }
     }
     
@@ -309,7 +448,6 @@ public class TextPlayer {
     shipsToPlace.addAll(Collections.nCopies(3, "Destroyer"));
     shipsToPlace.addAll(Collections.nCopies(3, "Battleship"));
     shipsToPlace.addAll(Collections.nCopies(2, "Carrier"));
-
   }
 }
 
