@@ -32,12 +32,12 @@ public class App {
   public void doPlacementPhase() throws IOException {
     p1.displayExplainMessage();
     for (String str : p1.shipsToPlace) {
-      p1.doOnePlacement(str);
+      p1.doOnePlacement(str, true);
     }
     p1.simpleDisplayBoard();
     p2.displayExplainMessage();
     for (String str : p2.shipsToPlace) {
-      p2.doOnePlacement(str);
+      p2.doOnePlacement(str, true);
     }
     p2.simpleDisplayBoard();
   }

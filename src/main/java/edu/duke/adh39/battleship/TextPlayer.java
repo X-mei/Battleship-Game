@@ -21,8 +21,8 @@ public class TextPlayer {
   final String name;
   final ArrayList<String> shipsToPlace;
   final HashMap<String, Function<Placement, Ship<Character>>> shipCreationFns;
-  final Integer moveCount;
-  final Integer sonarCount;
+  protected Integer moveCount;
+  protected Integer sonarCount;
 
   /**
    * This constructor initialize all the field in the textplayer class.
@@ -79,7 +79,7 @@ public class TextPlayer {
    * @return the coordinate after the conversion.
    * @throws IOException if the input readline fails, IllegalArgumentException if the input is invalid.
    */
-  public String readAction(String prompt) throws IOException, IllegalArgumentException {
+  public Character readAction(String prompt) throws IOException, IllegalArgumentException {
     out.println(prompt);
     String s = inputReader.readLine();
     if (s == null) {
@@ -89,10 +89,11 @@ public class TextPlayer {
     if (s.length() != 1) {
       throw new IllegalArgumentException("Illegal argument length, have to be a single character.");
     }
-    if (s != "F" || s != "M" || s != "S") {
+    char res = Character.toUpperCase(s.charAt(0));
+    if (res != 'F' && res != 'M' && res != 'S') {
       throw new IllegalArgumentException("Illegal argument, can be either F, M or S.");
     }
-    return s;
+    return res;
   }
 
   /**
@@ -100,7 +101,7 @@ public class TextPlayer {
    * It also handles all the previous IllegalArgumentException.
    * @throws IOException if the input outputing the result fails.
    */
-  public Ship<Character> doOnePlacement(String shipName) throws IOException {
+  public Ship<Character> doOnePlacement(String shipName, Boolean display) throws IOException {
     Boolean success = false;
     Ship<Character> ship = null;
     while (!success) {
@@ -111,7 +112,9 @@ public class TextPlayer {
         if (result != null) {
           throw new IllegalArgumentException(result);
         }
-        out.println(view.displayMyOwnBoard());
+        if (display) {
+          simpleDisplayBoard();
+        }
         success = true;
       }
       catch (IllegalArgumentException ilg){
@@ -168,7 +171,7 @@ public class TextPlayer {
       }
     }
     if (enemyBoard.hasLost()) {
-      out.println(name+" Won!"); 
+      out.println(name+" Won!");
     }
   }
 
@@ -177,7 +180,7 @@ public class TextPlayer {
    * Illegal coordinate input is handled at this level.
    * @throws IOException if the input readline fails.
    */
-  private void moveAction() throws IOException {
+  public void moveAction() throws IOException {
     Boolean success = false;
     while (!success) {
       try {
@@ -186,9 +189,11 @@ public class TextPlayer {
         if (sOld == null) {
           throw new IllegalArgumentException("No ship at this location.");
         }
-        Ship<Character> sNew = doOnePlacement(sOld.getName());
+        Ship<Character> sNew = doOnePlacement(sOld.getName(), false);
         sNew.changeCoordinate(sOld);
         theBoard.removeShip(sOld);
+        simpleDisplayBoard();
+        success = true;
       }
       catch (IllegalArgumentException ilg) {
         out.println(ilg.getMessage());
@@ -203,13 +208,14 @@ public class TextPlayer {
    * @param enemy's board.
    * @throws IOException if the input readline fails.
    */
-  private void scanAction(Board<Character> enemyBoard) throws IOException {
+  public void scanAction(Board<Character> enemyBoard) throws IOException {
     Boolean success = false;
     while (!success) {
       try {
         Coordinate c = readCoordinate(name + ", where do you want to scan?");
         HashMap<String, Integer> scanRes = enemyBoard.sonarScan(c);
-        scanRes.entrySet().forEach(entry->{System.out.println(entry.getKey() + " occupies " + entry.getValue() + " squares.");});
+        scanRes.entrySet().forEach(entry->{out.println(entry.getKey() + " occupies " + entry.getValue() + " squares.");});
+        success = true;
       }
       catch (IllegalArgumentException ilg) {
         out.println(ilg.getMessage());
@@ -228,16 +234,25 @@ public class TextPlayer {
     Boolean success = false;
     while (!success) {
       try {
-        String action = readAction(name + ", what would you like to do?");
-        if (action == "F") {
+        Character action = readAction(name + ", what would you like to do?");
+        if (action == 'S' && sonarCount < 1) {
+          throw new IllegalArgumentException("You have run out of usage of Sonar Scan.");
+        }
+        if (action == 'M' && moveCount < 1) {
+          throw new IllegalArgumentException("You have run out of usage of Move Ship.");
+        }
+        if (action == 'F') {
           fireAction(enemyBoard);
         }
-        else if (action == "M") {
+        else if (action == 'M') {
           moveAction();
+          moveCount--;
         }
         else {//Scan
           scanAction(enemyBoard);
+          sonarCount--;
         }
+        success = true;
       }
       catch (IllegalArgumentException ilg) {
         out.println(ilg.getMessage());
