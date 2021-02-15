@@ -298,9 +298,9 @@ public class TextPlayer {
         if (sOld == null) {
           throw new IllegalArgumentException("No ship at this location.");
         }
+        theBoard.removeShip(sOld);
         Ship<Character> sNew = doOnePlacement(sOld.getName(), false);
         sNew.changeCoordinate(sOld);
-        theBoard.removeShip(sOld);
         if (!isComputer) {
           simpleDisplayBoard();
         }
