@@ -41,11 +41,11 @@ public class TextPlayer {
     this.factory = factory;
     this.shipsToPlace = new ArrayList<String>();
     this.shipCreationFns = new HashMap<String, Function<Placement, Ship<Character>>>();
-    setupShipCreationMap();
-    setupShipCreationList();
     this.moveCount = 3;
     this.sonarCount = 3;
     this.isComputer = isComputer;
+    setupShipCreationMap();
+    setupShipCreationList();
   }
 
   /**

@@ -13,7 +13,7 @@ public class InBoundsRuleCheckerTest {
     Placement p1 = new Placement("A0H");
     Placement p2 = new Placement("C2v");
     Placement p3 = new Placement("D3h");
-    Placement p4 = new Placement(new Coordinate(-1, 4), 'H');
+    Placement p4 = new Placement(new Coordinate(-1, 2), 'H');
     Placement p5 = new Placement(new Coordinate(1, -3), 'V');
     Ship<Character> s1 = f.makeSubmarine(p1);
     Ship<Character> s2 = f.makeBattleship(p2);

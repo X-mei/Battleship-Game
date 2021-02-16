@@ -360,6 +360,7 @@ public class TextPlayerTest {
     bytes.reset();
     player1.playOneTurnV2(player2.theBoard, player2.view);
     assertEquals(expected4, bytes.toString());
+    
     player2.playOneTurnV2(player1.theBoard, player1.view);
     bytes.reset();
     player1.playOneTurnV2(player2.theBoard, player2.view);

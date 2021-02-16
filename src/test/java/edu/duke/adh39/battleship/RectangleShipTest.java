@@ -1,7 +1,9 @@
 package edu.duke.adh39.battleship;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 
 import org.junit.jupiter.api.Test;
@@ -9,11 +11,11 @@ import org.junit.jupiter.api.Test;
 public class RectangleShipTest {
   @Test
   public void test_ship_coordinates() {
-    HashSet<Coordinate> set = new HashSet<Coordinate>();
+    ArrayList<Coordinate> set = new ArrayList<Coordinate>();
     set.add(new Coordinate(1, 3));
     set.add(new Coordinate(2, 3));
     set.add(new Coordinate(3, 3));
-    HashSet<Coordinate> expected = RectangleShip.makeCoords(new Coordinate(1,3), 1, 3);
+    ArrayList<Coordinate> expected = RectangleShip.makeCoords(new Coordinate(1,3), 1, 3);
     assertEquals(set, expected);
   }
   
@@ -62,6 +64,28 @@ public class RectangleShipTest {
     set.add(new Coordinate(3, 3));
     BasicShip<Character> s = new RectangleShip<Character>("Rectangle Ship", new Coordinate(1,3), 1, 3, 's', '*');
     assertEquals(set, s.getCoordinates());
+  }
+
+  @Test
+  public void test_change_position() {
+    BasicShip<Character> s1 = new RectangleShip<Character>("Rectangle Ship", new Coordinate(1,3), 1, 3, 's', '*');
+    BasicShip<Character> s2 = new RectangleShip<Character>("Rectangle Ship", new Coordinate(2,4), 3, 1, 's', '*');
+    s1.recordHitAt(new Coordinate(1, 3));
+    s2.changeCoordinate(s1);
+    assertEquals(true, s1.wasHitAt(new Coordinate(1, 3)));
+    assertEquals(false, s1.wasHitAt(new Coordinate(2, 3)));
+    assertEquals(false, s1.wasHitAt(new Coordinate(3, 3)));
+    assertEquals(true, s2.wasHitAt(new Coordinate(2, 4)));
+    assertEquals(false, s2.wasHitAt(new Coordinate(2, 5)));
+    assertEquals(false, s2.wasHitAt(new Coordinate(2, 6)));
+    s1.recordHitAt(new Coordinate(2, 3));
+    s1.recordHitAt(new Coordinate(3, 3));
+    s2.changeCoordinate(s1);
+    assertEquals(true, s1.isSunk());
+    assertEquals(true, s2.isSunk());
+    assertEquals(false, s2.occupiesCoordinates(new Coordinate(1,3)));
+    assertEquals(false, s2.occupiesCoordinates(new Coordinate(2,3)));
+    assertEquals(false, s2.occupiesCoordinates(new Coordinate(3,3)));
   }
 }
 

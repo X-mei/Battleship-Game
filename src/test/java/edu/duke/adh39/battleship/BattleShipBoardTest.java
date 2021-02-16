@@ -4,6 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import java.util.HashMap;
+
 import org.junit.jupiter.api.Test;
 
 public class BattleShipBoardTest {
@@ -119,6 +121,43 @@ public class BattleShipBoardTest {
     assertSame(s2, b.fireAt(new Coordinate(3, 2)));
     assertSame(s2, b.fireAt(new Coordinate(4, 2)));
     assertEquals(true, b.hasLost());
+  }
+
+  @Test
+  void test_sonar_scan() {
+    Board<Character> b = new BattleShipBoard<Character>(10, 20, 'X');
+    Placement p1 = new Placement("A0H");
+    Placement p2 = new Placement("B2v");
+    V1ShipFactory<Character> f = new V1ShipFactory <Character>();
+    Ship<Character> s1 = f.makeSubmarine(p1);
+    Ship<Character> s2 = f.makeBattleship(p2);
+    b.tryAddShip(s1);
+    b.tryAddShip(s2);
+    HashMap<String, Integer> expected = new HashMap<String, Integer>();
+    expected.put("Submarine", 2);
+    expected.put("Destroyer", 0);
+    expected.put("Battleship", 2);
+    expected.put("Carrier", 0);
+    assertEquals(expected, b.sonarScan(new Coordinate("A1")));
+  }
+
+  @Test
+  void test_get_remove_ship() {
+    Board<Character> b = new BattleShipBoard<Character>(10, 20, 'X');
+    Placement p1 = new Placement("A0H");
+    Placement p2 = new Placement("B2v");
+    V1ShipFactory<Character> f = new V1ShipFactory <Character>();
+    Ship<Character> s1 = f.makeSubmarine(p1);
+    Ship<Character> s2 = f.makeBattleship(p2);
+    b.tryAddShip(s1);
+    b.tryAddShip(s2);
+    assertEquals(null, b.getShipAt(new Coordinate("A2")));
+    assertEquals(s1, b.getShipAt(new Coordinate("A0")));
+    assertEquals('s', b.whatIsAtForSelf(new Coordinate("A0")));
+    assertEquals('s', b.whatIsAtForSelf(new Coordinate("A1")));
+    b.removeShip(s1);
+    assertEquals(null, b.whatIsAtForSelf(new Coordinate("A0")));
+    assertEquals(null, b.whatIsAtForSelf(new Coordinate("A1")));
   }
   
   private <T> void checkWhatIsAtBoard(Board<T> b, T[][] expected){
