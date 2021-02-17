@@ -217,9 +217,21 @@ public class TextPlayerTest {
     ByteArrayOutputStream bytes = new ByteArrayOutputStream();
     TextPlayer player = createTextPlayerV2(3, 3, "", bytes);
     assertEquals('F', player.randomAction());
+    assertEquals('F', player.randomAction());
+    assertEquals('F', player.randomAction());
+    assertEquals('S', player.randomAction());
+    assertEquals('M', player.randomAction());
+    assertEquals('M', player.randomAction());
+    assertEquals('F', player.randomAction());
+    assertEquals(new Placement("C2V"), player.randomPlacement("Submarine"));
+    assertEquals(new Placement("A1V"), player.randomPlacement("Submarine"));
     assertEquals(new Placement("B1H"), player.randomPlacement("Submarine"));
-    assertEquals(new Placement("B1U"), player.randomPlacement("Carrier"));
-    assertEquals(new Coordinate("B1"), player.randomCoordinate());
+    assertEquals(new Placement("A1U"), player.randomPlacement("Carrier"));
+    assertEquals(new Placement("B0R"), player.randomPlacement("Carrier"));
+    assertEquals(new Placement("B1D"), player.randomPlacement("Carrier"));
+    assertEquals(new Coordinate("C0"), player.randomCoordinate());
+    assertEquals(new Coordinate("A2"), player.randomCoordinate());
+    assertEquals(new Coordinate("C0"), player.randomCoordinate());
   }
 
   @Test

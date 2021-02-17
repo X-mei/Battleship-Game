@@ -24,6 +24,7 @@ public class TextPlayer {
   final ArrayList<String> shipsToPlace;
   final HashMap<String, Function<Placement, Ship<Character>>> shipCreationFns;
   final Boolean isComputer;
+  final Random randomGenerator;
   protected Integer moveCount;
   protected Integer sonarCount;
   
@@ -44,6 +45,7 @@ public class TextPlayer {
     this.moveCount = 3;
     this.sonarCount = 3;
     this.isComputer = isComputer;
+    this.randomGenerator = new Random(29);
     setupShipCreationMap();
     setupShipCreationList();
   }
@@ -88,12 +90,9 @@ public class TextPlayer {
    * @param myHashSet is the pool to generate character from.
    * @return the generated placement.
    */
-  private Character randomCharacter(HashSet<Character> myHashSet) {
-    long s = 29;
-    Random random = new Random();
-    random.setSeed(s); 
+  public Character randomCharacter(HashSet<Character> myHashSet) {
     int size = myHashSet.size();
-    int item = random.nextInt(size); 
+    int item = randomGenerator.nextInt(size); 
     int i = 0;
     Character chr = null;
     for(Character obj : myHashSet)
@@ -113,7 +112,7 @@ public class TextPlayer {
    * @return the coordinate after the conversion.
    * @throws IOException if the input readline fails, IllegalArgumentException if the input is invalid.
    */
-  public Coordinate readCoordinate(String prompt) throws IOException, IllegalArgumentException {
+  private Coordinate readCoordinate(String prompt) throws IOException, IllegalArgumentException {
     out.println(prompt);
     String s = inputReader.readLine();
     if (s == null) {
@@ -127,11 +126,8 @@ public class TextPlayer {
    * @return the generated coordinate.
    */
   public Coordinate randomCoordinate() {
-    long s = 29;
-    Random random = new Random();
-    random.setSeed(s);
-    Integer row = random.ints(0, theBoard.getHeight()).findFirst().getAsInt();
-    Integer col = random.ints(0, theBoard.getWidth()).findFirst().getAsInt();
+    Integer row = randomGenerator.ints(0, theBoard.getHeight()).findFirst().getAsInt();
+    Integer col = randomGenerator.ints(0, theBoard.getWidth()).findFirst().getAsInt();
     return new Coordinate(row, col);
   }
 
@@ -192,9 +188,7 @@ public class TextPlayer {
         if (result != null) {
           throw new IllegalArgumentException(result);
         }
-        if (display && !isComputer) {
-          simpleDisplayBoard();
-        }
+        simpleDisplayBoard();
         success = true;
       }
       catch (IllegalArgumentException ilg){
@@ -222,9 +216,7 @@ public class TextPlayer {
    * @throws IOException if the input readline fails.
    */
   public void playOneTurnV1(Board<Character> enemyBoard, BoardTextView enemyView) throws IOException {
-    if (!isComputer) {
-      displayBothBoard(enemyView);
-    }
+    displayBothBoard(enemyView);
     fireAction(enemyBoard);
   }
 
@@ -235,7 +227,7 @@ public class TextPlayer {
    * @param enemy's board and the view of that board.
    * @throws IOException if the input readline fails.
    */
-  private void fireAction(Board<Character> enemyBoard) throws IOException
+  public void fireAction(Board<Character> enemyBoard) throws IOException
   {
     Boolean success = false;
     while (!success) {
@@ -268,9 +260,7 @@ public class TextPlayer {
         
       }
       catch(IllegalArgumentException ilg) {
-        if (!isComputer) {
-          out.println(ilg.getMessage());
-        }
+        out.println(ilg.getMessage());
       }
     }
     if (enemyBoard.hasLost()) {
@@ -301,10 +291,7 @@ public class TextPlayer {
         theBoard.removeShip(sOld);
         Ship<Character> sNew = doOnePlacement(sOld.getName(), false);
         sNew.changeCoordinate(sOld);
-        if (!isComputer) {
-          simpleDisplayBoard();
-        }
-        else {
+        if (isComputer) {
           out.println(name + " moved a ship.");
         }
         success = true;
@@ -345,9 +332,7 @@ public class TextPlayer {
         success = true;
       }
       catch (IllegalArgumentException ilg) {
-        if (!isComputer) {
-          out.println(ilg.getMessage());
-        }
+        out.println(ilg.getMessage());
       }
     }
   }
@@ -359,9 +344,7 @@ public class TextPlayer {
    * @throws IOException if the input readline fails.
    */
   public void playOneTurnV2(Board<Character> enemyBoard, BoardTextView enemyView) throws IOException {
-    if (!isComputer) {
-      displayBothBoard(enemyView);
-    }
+    displayBothBoard(enemyView);
     Boolean success = false;
     while (!success) {
       try {
@@ -404,6 +387,9 @@ public class TextPlayer {
    * This function display the message explaining basic rules on placing the ships along with a empty board.
    */
   public void displayExplainMessage() {
+    if (isComputer) {
+      return;
+    }
     out.println(view.displayMyOwnBoard());
     out.println(name+" you are going to place the following ships (which are all\n"+
                    "rectangular). For each ship, type the coordinate of the upper left\n"+
@@ -420,6 +406,9 @@ public class TextPlayer {
    * This function display the current board.
    */
   public void simpleDisplayBoard() {
+    if (isComputer) {
+      return;
+    }
     out.println(view.displayMyOwnBoard());
   }
 
@@ -427,6 +416,9 @@ public class TextPlayer {
    * This function display the current board of you and the enemy.
    */
   private void displayBothBoard(BoardTextView enemyView) {
+    if (isComputer) {
+      return;
+    }
     out.println(view.displayMyBoardWithEnemyNextToIt(enemyView, "Your Ocean", "Opponent's Ocean"));
   }
   

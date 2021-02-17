@@ -82,10 +82,12 @@ public class BattleShipBoard<T> implements Board<T>{
       if (s.occupiesCoordinates(c)){
         s.recordHitAt(c);
         enemyHits.put(c, s.getDisplayInfoAt(c, false));
+        enemyMisses.remove(c);
         return s;
       }
     }
     enemyMisses.add(c);
+    enemyHits.remove(c);
     return null;
   }
 

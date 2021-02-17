@@ -1,0 +1,1263 @@
+Welcome to the game of BattleShip!
+
+#################################################################
+
+Please select version(please type 1 or 2):
+Is player 1 a computer?(1 for true/0 for false)
+Is player 2 a computer?(1 for true/0 for false)
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1 moved a ship.
+Player2 moved a ship.
+Player1 used a sonar scan.
+Player2 used a sonar scan.
+Player1 used a sonar scan.
+Player2 used a sonar scan.
+Player1 used a sonar scan.
+Player2 used a sonar scan.
+Player1 hit your ship at:(4, 4)
+Player2 hit your ship at:(4, 4)
+Player1Missed.
+Player2Missed.
+Player1 moved a ship.
+Player2 moved a ship.
+Player1Missed.
+Player2Missed.
+Player1 moved a ship.
+Player2 moved a ship.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(0, 9)
+Player2 hit your ship at:(0, 9)
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(10, 1)
+Player2 hit your ship at:(10, 1)
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(9, 4)
+Player2 hit your ship at:(9, 4)
+Player1 hit your ship at:(9, 1)
+Player2 hit your ship at:(9, 1)
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(13, 8)
+Player2 hit your ship at:(13, 8)
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(13, 9)
+Player2 hit your ship at:(13, 9)
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(14, 2)
+Player2 hit your ship at:(14, 2)
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(1, 5)
+Player2 hit your ship at:(1, 5)
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(13, 7)
+Player2 hit your ship at:(13, 7)
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(3, 4)
+Player2 hit your ship at:(3, 4)
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(0, 8)
+Player2 hit your ship at:(0, 8)
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(11, 5)
+Player2 hit your ship at:(11, 5)
+Player1 hit your ship at:(15, 7)
+Player2 hit your ship at:(15, 7)
+Player1 hit your ship at:(13, 5)
+Player2 hit your ship at:(13, 5)
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(4, 2)
+Player2 hit your ship at:(4, 2)
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(16, 7)
+Player2 hit your ship at:(16, 7)
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(14, 7)
+Player2 hit your ship at:(14, 7)
+Player1 hit your ship at:(14, 7)
+Player2 hit your ship at:(14, 7)
+Player1 hit your ship at:(4, 2)
+Player2 hit your ship at:(4, 2)
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(1, 5)
+Player2 hit your ship at:(1, 5)
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(13, 9)
+Player2 hit your ship at:(13, 9)
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(16, 8)
+Player2 hit your ship at:(16, 8)
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(13, 1)
+Player2 hit your ship at:(13, 1)
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(10, 1)
+Player2 hit your ship at:(10, 1)
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(0, 9)
+Player2 hit your ship at:(0, 9)
+Player1 hit your ship at:(13, 2)
+Player2 hit your ship at:(13, 2)
+Player1 hit your ship at:(13, 1)
+Player2 hit your ship at:(13, 1)
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(15, 7)
+Player2 hit your ship at:(15, 7)
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(13, 9)
+Player2 hit your ship at:(13, 9)
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(2, 4)
+Player2 hit your ship at:(2, 4)
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(11, 4)
+Player2 hit your ship at:(11, 4)
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(13, 5)
+Player2 hit your ship at:(13, 5)
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(13, 7)
+Player2 hit your ship at:(13, 7)
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(2, 4)
+Player2 hit your ship at:(2, 4)
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(3, 4)
+Player2 hit your ship at:(3, 4)
+Player1 hit your ship at:(13, 7)
+Player2 hit your ship at:(13, 7)
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(12, 5)
+Player2 hit your ship at:(12, 5)
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(11, 4)
+Player2 hit your ship at:(11, 4)
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(0, 7)
+Player2 hit your ship at:(0, 7)
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(0, 9)
+Player2 hit your ship at:(0, 9)
+Player1 hit your ship at:(16, 7)
+Player2 hit your ship at:(16, 7)
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(3, 3)
+Player2 hit your ship at:(3, 3)
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(4, 1)
+Player2 hit your ship at:(4, 1)
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(13, 5)
+Player2 hit your ship at:(13, 5)
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(10, 4)
+Player2 hit your ship at:(10, 4)
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(13, 2)
+Player2 hit your ship at:(13, 2)
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(13, 0)
+Player2 hit your ship at:(13, 0)
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(4, 4)
+Player2 hit your ship at:(4, 4)
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(4, 2)
+Player2 hit your ship at:(4, 2)
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(13, 9)
+Player2 hit your ship at:(13, 9)
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(15, 7)
+Player2 hit your ship at:(15, 7)
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(1, 7)
+Player2 hit your ship at:(1, 7)
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(16, 6)
+Player2 hit your ship at:(16, 6)
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(0, 8)
+Player2 hit your ship at:(0, 8)
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(2, 4)
+Player2 hit your ship at:(2, 4)
+Player1 hit your ship at:(13, 5)
+Player2 hit your ship at:(13, 5)
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(15, 7)
+Player2 hit your ship at:(15, 7)
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(4, 4)
+Player2 hit your ship at:(4, 4)
+Player1 hit your ship at:(16, 8)
+Player2 hit your ship at:(16, 8)
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(3, 3)
+Player2 hit your ship at:(3, 3)
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(10, 1)
+Player2 hit your ship at:(10, 1)
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(1, 5)
+Player2 hit your ship at:(1, 5)
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(0, 8)
+Player2 hit your ship at:(0, 8)
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(1, 7)
+Player2 hit your ship at:(1, 7)
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(14, 9)
+Player2 hit your ship at:(14, 9)
+Player1 hit your ship at:(14, 2)
+Player2 hit your ship at:(14, 2)
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(16, 7)
+Player2 hit your ship at:(16, 7)
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(9, 1)
+Player2 hit your ship at:(9, 1)
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(0, 8)
+Player2 hit your ship at:(0, 8)
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(4, 4)
+Player2 hit your ship at:(4, 4)
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(13, 8)
+Player2 hit your ship at:(13, 8)
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(14, 0)
+Player2 hit your ship at:(14, 0)
+Player1 hit your ship at:(12, 1)
+Player2 hit your ship at:(12, 1)
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(4, 2)
+Player2 hit your ship at:(4, 2)
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(13, 9)
+Player2 hit your ship at:(13, 9)
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(15, 7)
+Player2 hit your ship at:(15, 7)
+Player1 hit your ship at:(1, 5)
+Player2 hit your ship at:(1, 5)
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(4, 2)
+Player2 hit your ship at:(4, 2)
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(14, 1)
+Player2 hit your ship at:(14, 1)
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(3, 4)
+Player2 hit your ship at:(3, 4)
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(1, 5)
+Player2 hit your ship at:(1, 5)
+Player1 hit your ship at:(3, 3)
+Player2 hit your ship at:(3, 3)
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(16, 8)
+Player2 hit your ship at:(16, 8)
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(9, 4)
+Player2 hit your ship at:(9, 4)
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(12, 1)
+Player2 hit your ship at:(12, 1)
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(4, 4)
+Player2 hit your ship at:(4, 4)
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(0, 9)
+Player2 hit your ship at:(0, 9)
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(11, 5)
+Player2 hit your ship at:(11, 5)
+Player1 hit your ship at:(12, 1)
+Player2 hit your ship at:(12, 1)
+Player1 hit your ship at:(3, 4)
+Player2 hit your ship at:(3, 4)
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(3, 4)
+Player2 hit your ship at:(3, 4)
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(10, 4)
+Player2 hit your ship at:(10, 4)
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(9, 1)
+Player2 hit your ship at:(9, 1)
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(10, 1)
+Player2 hit your ship at:(10, 1)
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(13, 9)
+Player2 hit your ship at:(13, 9)
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(3, 4)
+Player2 hit your ship at:(3, 4)
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(0, 8)
+Player2 hit your ship at:(0, 8)
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(16, 7)
+Player2 hit your ship at:(16, 7)
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(4, 2)
+Player2 hit your ship at:(4, 2)
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(14, 9)
+Player2 hit your ship at:(14, 9)
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(0, 8)
+Player2 hit your ship at:(0, 8)
+Player1 hit your ship at:(11, 4)
+Player2 hit your ship at:(11, 4)
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(1, 5)
+Player2 hit your ship at:(1, 5)
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(10, 4)
+Player2 hit your ship at:(10, 4)
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(1, 5)
+Player2 hit your ship at:(1, 5)
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(2, 4)
+Player2 hit your ship at:(2, 4)
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(13, 8)
+Player2 hit your ship at:(13, 8)
+Player1 hit your ship at:(12, 1)
+Player2 hit your ship at:(12, 1)
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(0, 9)
+Player2 hit your ship at:(0, 9)
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(10, 1)
+Player2 hit your ship at:(10, 1)
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(11, 4)
+Player2 hit your ship at:(11, 4)
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(13, 8)
+Player2 hit your ship at:(13, 8)
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(1, 6)
+Player2 hit your ship at:(1, 6)
+Player1Missed.
+Player2Missed.
+Player1Missed.
+Player2Missed.
+Player1 hit your ship at:(14, 2)
+Player2 hit your ship at:(14, 2)
+Player1 hit your ship at:(14, 8)
+Player1 Won!

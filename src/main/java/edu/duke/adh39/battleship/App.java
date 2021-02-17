@@ -98,30 +98,32 @@ public class App {
     }
     Character p1IsCom = null;
     Character p2IsCom = null;
-    while (true) {
-      outputDestination.println("Is player 1 a computer?(1 for true/0 for false)");
-      String s = inputSource.readLine();
-      p1IsCom = s.charAt(0);
-      if (p1IsCom == '0' || p1IsCom == '1') {
-        break;
+    if (version == '2') {
+      while (true) {
+        outputDestination.println("Is player 1 a computer?(1 for true/0 for false)");
+        String s = inputSource.readLine();
+        p1IsCom = s.charAt(0);
+        if (p1IsCom == '0' || p1IsCom == '1') {
+          break;
+        }
+      }
+      while (true) {
+        outputDestination.println("Is player 2 a computer?(1 for true/0 for false)");
+        String s = inputSource.readLine();
+        p2IsCom = s.charAt(0);
+        if (p2IsCom == '0' || p2IsCom == '1') {
+          break;
+        }
       }
     }
-    while (true) {
-      outputDestination.println("Is player 2 a computer?(1 for true/0 for false)");
-      String s = inputSource.readLine();
-      p2IsCom = s.charAt(0);
-      if (p2IsCom == '0' || p2IsCom == '1') {
-        break;
-      }
-    }
-    Boolean C1 = (p1IsCom == 1) ? true:false;
-    Boolean C2 = (p2IsCom == 1) ? true:false;
-    if (version == 1) {
-      App app = new App(b1, b2, inputSource, System.out, new V1ShipFactory<Character>(), C1, C2);
+    if (version == '1') {
+      App app = new App(b1, b2, inputSource, System.out, new V1ShipFactory<Character>(), false, false);
       app.doPlacementPhase();
       app.doAttackingPhaseV1();
     }
     else {
+      Boolean C1 = (p1IsCom == '1') ? true:false;
+      Boolean C2 = (p2IsCom == '1') ? true:false;
       App app = new App(b1, b2, inputSource, System.out, new V2ShipFactory<Character>(), C1, C2);
       app.doPlacementPhase();
       app.doAttackingPhaseV2();
