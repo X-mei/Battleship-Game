@@ -1,7 +1,9 @@
 package edu.duke.adh39.battleship;
 
 import java.util.ArrayList;
-
+/**
+ * This class extends the basic ship class.
+ */
 public class BattleShip<T> extends BasicShip<T> {
   /**
    * This is a helper function to create a hashset of all the coordinate

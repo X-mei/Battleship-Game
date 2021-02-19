@@ -1,5 +1,9 @@
 package edu.duke.adh39.battleship;
-
+/**
+ * This concrete class extends V1ShipFactory. It inherit method to create submarine and destroyer but override the method to create battleship and carrier.
+ * generic in typename T, which is the type of information the view needs to
+ * display this ship.
+ */
 public class V2ShipFactory<T> extends V1ShipFactory<T> {
   
 	@Override

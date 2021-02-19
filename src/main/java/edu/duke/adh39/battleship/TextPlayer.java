@@ -67,6 +67,7 @@ public class TextPlayer {
 
   /**
    * This function generate a random placement.
+   * @param the name of the ship to generate
    * @return the generated placement.
    */
   public Placement randomPlacement(String shipName){
@@ -181,7 +182,7 @@ public class TextPlayer {
           p = readPlacement(name + ", where would you like to place a " + shipName + "?");
         }
         else {
-          p = randomPlacement(shipName);//placeholder
+          p = randomPlacement(shipName);
         }
         ship = shipCreationFns.get(shipName).apply(p);
         String result = theBoard.tryAddShip(ship);
@@ -282,7 +283,7 @@ public class TextPlayer {
           c = readCoordinate(name + ", select the ship to move?");
         }
         else {
-          c = randomCoordinate();//placeholder
+          c = randomCoordinate();
         }
         Ship<Character> sOld = theBoard.getShipAt(c);
         if (sOld == null) {

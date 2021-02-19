@@ -1,5 +1,9 @@
 package edu.duke.adh39.battleship;
-
+/**
+ * This concrete class implement AbstractShipFactory.
+ * generic in typename T, which is the type of information the view needs to
+ * display this ship.
+ */
 public class V1ShipFactory<T> implements AbstractShipFactory<T>{
 
 	@Override

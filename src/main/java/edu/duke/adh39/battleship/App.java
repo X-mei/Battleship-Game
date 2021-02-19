@@ -82,11 +82,12 @@ public class App {
    * This function runs the main program setting up two players and runs two phase, placement phase and attacking phase.
    */
   public static void main(String[] args) throws IOException {
-    
+    //Set up board, input and output source
     Board<Character> b1 = new BattleShipBoard<Character>(10, 20, 'X');
     Board<Character> b2 = new BattleShipBoard<Character>(10, 20, 'X');
     BufferedReader inputSource = new BufferedReader(new InputStreamReader(System.in));
     PrintStream outputDestination = System.out;
+    //Prompt for the version of the game
     Character version = null;
     outputDestination.println("Welcome to the game of BattleShip!\n\n"+"#################################################################\n\n"+"Please select version(please type 1 or 2):");
     while (true) {
@@ -96,6 +97,7 @@ public class App {
         break;
       }
     }
+    //Prompt the user for weather player is computer if version 2 is selected
     Character p1IsCom = null;
     Character p2IsCom = null;
     if (version == '2') {
@@ -116,6 +118,7 @@ public class App {
         }
       }
     }
+    //Set up two player and run the placement as well as the attacking phase.
     if (version == '1') {
       App app = new App(b1, b2, inputSource, System.out, new V1ShipFactory<Character>(), false, false);
       app.doPlacementPhase();

@@ -1,10 +1,6 @@
 package edu.duke.adh39.battleship;
 
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Set;
 
 /**
  * This class extends the basic ship class.

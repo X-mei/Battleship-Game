@@ -56,12 +56,22 @@ public interface Board<T> {
 
   /**
    * This function realize the sonar scan functionality.
-   * @return the hash map of a map different ship and how many square they occupy.
+   * @param the center of sonar scan
+   * @return the hash map of a map different ship and how many squares each occupy.
    */
   public HashMap<String, Integer> sonarScan(Coordinate c);
 
+  /**
+   * This function return the ship at the designated location.
+   * @param the coordinate to look for.
+   * @return the ship or null if no ship at that coordinate.
+   */
   public Ship<T> getShipAt(Coordinate c);
 
+  /**
+   * This function remove the given ship from the board.
+   * @param the ship to remove.
+   */
   public void removeShip(Ship<T> s);
 }
 

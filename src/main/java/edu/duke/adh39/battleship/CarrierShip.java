@@ -1,11 +1,13 @@
 package edu.duke.adh39.battleship;
 
 import java.util.ArrayList;
-
+/**
+ * This class extends the basic ship class.
+ */
 public class CarrierShip<T> extends BasicShip<T> {
   /**
    * This is a helper function to create a hashset of all the coordinate
-   * of a battleship with given topLeft coordinate and orientation.
+   * of a carrier with given topLeft coordinate and orientation.
    * @param middle is the anchor of the ship(in the middle), ori is the orientation of the ship.
    * @return a hashset of all the coordinate to represent the ship.
    */
